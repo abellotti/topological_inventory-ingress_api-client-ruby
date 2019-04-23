@@ -34,10 +34,10 @@ module TopologicalInventoryIngressApiClient
 
       def save_payload_in_batches(inventory)
         parts         = 0
-        new_inventory = new_inventory(inventory)
+        new_inventory = build_new_inventory(inventory)
 
         inventory[:collections].each do |collection|
-          new_collection = new_collection(collection)
+          new_collection = build_new_collection(collection)
 
           data = collection[:data].map { |x| JSON.generate(x) }
           # Lets compute sizes of the each data item, plus 1 byte for comma
@@ -68,8 +68,8 @@ module TopologicalInventoryIngressApiClient
               parts += 1
 
               # Create new data containers for a new batch
-              new_inventory  = new_inventory(inventory)
-              new_collection = new_collection(collection)
+              new_inventory  = build_new_inventory(inventory)
+              new_collection = build_new_collection(collection)
 
               # Start with the data part we've removed from the currently saved payload
               total_size = wrapper_size + data_size
@@ -99,11 +99,11 @@ module TopologicalInventoryIngressApiClient
         client.save_inventory_with_http_info(:inventory => inventory)
       end
 
-      def new_collection(collection)
+      def build_new_collection(collection)
         {:name => collection[:name], :data => []}
       end
 
-      def new_inventory(inventory)
+      def build_new_inventory(inventory)
         new_inventory                           = inventory.clone
         new_inventory[:refresh_state_part_uuid] = SecureRandom.uuid
         new_inventory[:collections]             = []
