@@ -85,7 +85,7 @@ module TopologicalInventoryIngressApiClient
         last_payload = JSON.generate(new_inventory)
         if (last_payload.size) > max_bytes
           raise TopologicalInventoryIngressApiClient::EntityTooLarge::SaveInventory::Exception::EntityTooLarge,
-                "Entity is bigger than total limit and can't be split: #{JSON.generate(new_inventory)}"
+                "Entity is bigger than total limit and can't be split: #{last_payload}"
         end
 
         # Save the rest
