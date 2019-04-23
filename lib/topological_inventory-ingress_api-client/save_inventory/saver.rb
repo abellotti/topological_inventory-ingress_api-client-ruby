@@ -62,6 +62,7 @@ module TopologicalInventoryIngressApiClient
 
               # Save the current batch
               save_inventory(JSON.generate(new_inventory))
+              parts += 1
 
               # Create new data containers for a new batch
               new_inventory  = new_inventory(inventory)
@@ -79,6 +80,7 @@ module TopologicalInventoryIngressApiClient
 
         # Save the rest
         save_inventory(JSON.generate(new_inventory))
+        parts += 1
 
         return parts
       end
