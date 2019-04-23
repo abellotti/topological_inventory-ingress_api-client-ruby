@@ -52,6 +52,7 @@ module TopologicalInventoryIngressApiClient
             total_size += data_size
 
             if total_size > max_bytes
+              # Remove the last data part, that caused going over the max limit
               counter -= 1
 
               # Add the entities to new collection, so the total size is below max
