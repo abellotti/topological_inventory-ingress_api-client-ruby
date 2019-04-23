@@ -3,10 +3,16 @@ require "topological_inventory-ingress_api-client/save_inventory/exception"
 module TopologicalInventoryIngressApiClient
   module SaveInventory
     class Saver
+      # As defined in:
+      # https://github.com/zendesk/ruby-kafka/blob/02f7e2816e1130c5202764c275e36837f57ca4af/lib/kafka/protocol/message.rb#L11-L17
+      # There is at least 112 bytes that are added as a message header, so we need to keep room for that. Lets make
+      # it 200 bytes, just for sure.
+      KAFKA_RESERVED_HEADER_SIZE = 200
+
       def initialize(client:, logger:, max_bytes: 1_000_000)
         @client    = client
         @logger    = logger
-        @max_bytes = 1_000_000
+        @max_bytes = max_bytes - KAFKA_RESERVED_HEADER_SIZE
       end
 
       attr_reader :client, :logger, :max_bytes
