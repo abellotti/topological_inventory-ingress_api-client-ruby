@@ -32,6 +32,8 @@ module TopologicalInventoryIngressApiClient
         end
       end
 
+      private
+
       def save_payload_in_batches(inventory)
         parts         = 0
         new_inventory = build_new_inventory(inventory)
