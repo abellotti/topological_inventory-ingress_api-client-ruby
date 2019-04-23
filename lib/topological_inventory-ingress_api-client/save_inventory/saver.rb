@@ -21,7 +21,7 @@ module TopologicalInventoryIngressApiClient
       def save(data)
         inventory = data[:inventory].to_hash
 
-        inventory_json = inventory.to_json
+        inventory_json = JSON.generate(inventory)
         if inventory_json.size < max_bytes
           save_inventory(inventory_json)
           return 1
@@ -39,12 +39,12 @@ module TopologicalInventoryIngressApiClient
         inventory[:collections].each do |collection|
           new_collection = new_collection(collection)
 
-          data = collection[:data].map(&:to_json)
+          data = collection[:data].map { |x| JSON.generate(x) }
           # Lets compute sizes of the each data item, plus 1 byte for comma
           data_sizes = data.map { |x| x.size + 1 }
 
           # Size of the current inventory and new_collection wrapper, plus 2 bytes for array signs
-          wrapper_size = new_inventory.to_json.size + new_collection.to_json.size + 2
+          wrapper_size = JSON.generate(new_inventory).size + JSON.generate(new_collection).size + 2
           total_size   = wrapper_size
           counter      = 0
           data_sizes.each do |data_size|
@@ -61,7 +61,7 @@ module TopologicalInventoryIngressApiClient
               new_inventory[:collections] << new_collection
 
               # Save the current batch
-              save_inventory(new_inventory.to_json)
+              save_inventory(JSON.generate(new_inventory))
 
               # Create new data containers for a new batch
               new_inventory  = new_inventory(inventory)
@@ -78,7 +78,7 @@ module TopologicalInventoryIngressApiClient
         end
 
         # Save the rest
-        save_inventory(new_inventory.to_json)
+        save_inventory(JSON.generate(new_inventory))
 
         return parts
       end
