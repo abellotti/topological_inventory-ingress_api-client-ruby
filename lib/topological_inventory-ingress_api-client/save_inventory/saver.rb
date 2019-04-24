@@ -73,6 +73,7 @@ module TopologicalInventoryIngressApiClient
               # Create new data containers for a new batch
               new_inventory  = build_new_inventory(inventory)
               new_collection = build_new_collection(collection)
+              wrapper_size = JSON.generate(new_inventory).size + JSON.generate(new_collection).size + 2
 
               # Start with the data part we've removed from the currently saved payload
               total_size = wrapper_size + data_size
