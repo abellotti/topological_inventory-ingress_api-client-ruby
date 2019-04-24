@@ -58,16 +58,19 @@ module TopologicalInventoryIngressApiClient
               counter -= 1
 
               # Add the entities to new collection, so the total size is below max
-              new_collection[:data] = collection[:data].shift(counter)
-              new_inventory[:collections] << new_collection
+              if counter > 0
+                new_collection[:data] = collection[:data].shift(counter)
+                new_inventory[:collections] << new_collection
+              end
 
-              if (total_size - data_size) > max_bytes
-                raise TopologicalInventoryIngressApiClient::EntityTooLarge::SaveInventory::Exception::EntityTooLarge,
-                      "Entity is bigger than total limit and can't be split: #{JSON.generate(new_inventory)}"
+              payload = JSON.generate(new_inventory)
+              if payload.size > max_bytes
+                raise TopologicalInventoryIngressApiClient::SaveInventory::Exception::EntityTooLarge,
+                      "Entity is bigger than total limit and can't be split: #{payload}"
               end
 
               # Save the current batch
-              save_inventory(JSON.generate(new_inventory))
+              save_inventory(payload)
               parts += 1
 
               # Create new data containers for a new batch
@@ -88,7 +91,7 @@ module TopologicalInventoryIngressApiClient
 
         last_payload = JSON.generate(new_inventory)
         if (last_payload.size) > max_bytes
-          raise TopologicalInventoryIngressApiClient::EntityTooLarge::SaveInventory::Exception::EntityTooLarge,
+          raise TopologicalInventoryIngressApiClient::SaveInventory::Exception::EntityTooLarge,
                 "Entity is bigger than total limit and can't be split: #{last_payload}"
         end
 
