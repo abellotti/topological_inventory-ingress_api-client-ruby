@@ -1,15 +1,53 @@
 # TopologicalInventoryIngressApiClient::DefaultApi
 
-All URIs are relative to *http://localhost/topological_inventory/ingress_api/0.0.2*
+All URIs are relative to *https://cloud.redhat.com//topological_inventory/ingress_api/0.0.2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_documentation**](DefaultApi.md#get_documentation) | **GET** /openapi.json | Return this API document in JSON format
 [**save_inventory**](DefaultApi.md#save_inventory) | **POST** /inventory | save inventory
-[**search_schemas**](DefaultApi.md#search_schemas) | **GET** /schemas | searches schemas
+
+
+# **get_documentation**
+> get_documentation
+
+Return this API document in JSON format
+
+### Example
+```ruby
+# load the gem
+require 'topological_inventory-ingress_api-client'
+
+api_instance = TopologicalInventoryIngressApiClient::DefaultApi.new
+
+begin
+  #Return this API document in JSON format
+  api_instance.get_documentation
+rescue TopologicalInventoryIngressApiClient::ApiError => e
+  puts "Exception when calling DefaultApi->get_documentation: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
 
 
 # **save_inventory**
-> save_inventory(opts)
+> Object save_inventory(inventory)
 
 save inventory
 
@@ -19,21 +57,14 @@ Submits a payload to be persisted to the database
 ```ruby
 # load the gem
 require 'topological_inventory-ingress_api-client'
-# setup authorization
-TopologicalInventoryIngressApiClient.configure do |config|
-  # Configure HTTP basic authorization: UserSecurity
-  config.username = 'YOUR USERNAME'
-  config.password = 'YOUR PASSWORD'
-end
 
 api_instance = TopologicalInventoryIngressApiClient::DefaultApi.new
-opts = {
-  inventory: TopologicalInventoryIngressApiClient::Inventory.new # Inventory | Inventory payload
-}
+inventory = TopologicalInventoryIngressApiClient::Inventory.new # Inventory | Inventory payload
 
 begin
   #save inventory
-  api_instance.save_inventory(opts)
+  result = api_instance.save_inventory(inventory)
+  p result
 rescue TopologicalInventoryIngressApiClient::ApiError => e
   puts "Exception when calling DefaultApi->save_inventory: #{e}"
 end
@@ -43,76 +74,19 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inventory** | [**Inventory**](Inventory.md)| Inventory payload | [optional] 
+ **inventory** | [**Inventory**](Inventory.md)| Inventory payload | 
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
-[UserSecurity](../README.md#UserSecurity)
+No authorization required
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
-
-
-
-# **search_schemas**
-> Array&lt;Schema&gt; search_schemas(opts)
-
-searches schemas
-
-By passing in the appropriate options, you can search for available inventory schemas in the system 
-
-### Example
-```ruby
-# load the gem
-require 'topological_inventory-ingress_api-client'
-# setup authorization
-TopologicalInventoryIngressApiClient.configure do |config|
-  # Configure HTTP basic authorization: UserSecurity
-  config.username = 'YOUR USERNAME'
-  config.password = 'YOUR PASSWORD'
-end
-
-api_instance = TopologicalInventoryIngressApiClient::DefaultApi.new
-opts = {
-  search_string: 'search_string_example', # String | pass an optional search string for looking up schemas
-  skip: 56, # Integer | number of records to skip for pagination
-  limit: 56 # Integer | maximum number of records to return
-}
-
-begin
-  #searches schemas
-  result = api_instance.search_schemas(opts)
-  p result
-rescue TopologicalInventoryIngressApiClient::ApiError => e
-  puts "Exception when calling DefaultApi->search_schemas: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search_string** | **String**| pass an optional search string for looking up schemas | [optional] 
- **skip** | **Integer**| number of records to skip for pagination | [optional] 
- **limit** | **Integer**| maximum number of records to return | [optional] 
-
-### Return type
-
-[**Array&lt;Schema&gt;**](Schema.md)
-
-### Authorization
-
-[UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

@@ -91,7 +91,7 @@ module TopologicalInventoryIngressApiClient
       end
 
       def save_inventory(inventory_json)
-        client.save_inventory_with_http_info(:inventory => inventory_json)
+        client.save_inventory_with_http_info(inventory_json)
       end
 
       def serialize_and_save_inventory(inventory)

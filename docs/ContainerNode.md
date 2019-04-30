@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **cpus** | **Integer** |  | [optional] 
 **memory** | **Integer** |  | [optional] 
-**pods** | [**Object**](.md) |  | [optional] 
+**pods** | **Integer** |  | [optional] 
 **allocatable_cpus** | **Float** |  | [optional] 
 **allocatable_memory** | **Integer** |  | [optional] 
 **allocatable_pods** | **Integer** |  | [optional] 
