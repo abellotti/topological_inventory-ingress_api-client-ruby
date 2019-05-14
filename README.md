@@ -54,35 +54,25 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'topological_inventory-ingress_api-client'
 
-# Setup authorization
-TopologicalInventoryIngressApiClient.configure do |config|
-  # Configure HTTP basic authorization: UserSecurity
-  config.username = 'YOUR USERNAME'
-  config.password = 'YOUR PASSWORD'
-end
-
 api_instance = TopologicalInventoryIngressApiClient::DefaultApi.new
-opts = {
-  inventory: TopologicalInventoryIngressApiClient::Inventory.new # Inventory | Inventory payload
-}
 
 begin
-  #save inventory
-  api_instance.save_inventory(opts)
+  #Return this API document in JSON format
+  api_instance.get_documentation
 rescue TopologicalInventoryIngressApiClient::ApiError => e
-  puts "Exception when calling DefaultApi->save_inventory: #{e}"
+  puts "Exception when calling DefaultApi->get_documentation: #{e}"
 end
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost/topological_inventory/ingress_api/0.0.2*
+All URIs are relative to *https://cloud.redhat.com//topological_inventory/ingress_api/0.0.2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*TopologicalInventoryIngressApiClient::DefaultApi* | [**get_documentation**](docs/DefaultApi.md#get_documentation) | **GET** /openapi.json | Return this API document in JSON format
 *TopologicalInventoryIngressApiClient::DefaultApi* | [**save_inventory**](docs/DefaultApi.md#save_inventory) | **POST** /inventory | save inventory
-*TopologicalInventoryIngressApiClient::DefaultApi* | [**search_schemas**](docs/DefaultApi.md#search_schemas) | **GET** /schemas | searches schemas
 
 
 ## Documentation for Models
@@ -124,8 +114,5 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
-
-### UserSecurity
-
-- **Type**: HTTP basic authentication
+ All endpoints do not require authorization.
 
