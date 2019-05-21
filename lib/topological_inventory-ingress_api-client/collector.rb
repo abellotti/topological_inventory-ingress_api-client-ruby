@@ -91,15 +91,15 @@ module TopologicalInventoryIngressApiClient
     end
 
     def save_inventory(collections,
+                       inventory_name,
+                       schema,
                        refresh_state_uuid = nil,
-                       refresh_state_part_uuid = nil,
-                       inventory = inventory_name,
-                       schema    = schema_name)
+                       refresh_state_part_uuid = nil)
       return 0 if collections.empty?
 
       TopologicalInventoryIngressApiClient::SaveInventory::Saver.new(:client => ingress_api_client, :logger => logger).save(
         :inventory => TopologicalInventoryIngressApiClient::Inventory.new(
-          :name                    => inventory,
+          :name                    => inventory_name,
           :schema                  => TopologicalInventoryIngressApiClient::Schema.new(:name => schema),
           :source                  => source,
           :collections             => collections,
@@ -114,16 +114,16 @@ module TopologicalInventoryIngressApiClient
       raise e
     end
 
-    def sweep_inventory(refresh_state_uuid,
+    def sweep_inventory(inventory_name,
+                        schema,
+                        refresh_state_uuid,
                         total_parts,
-                        sweep_scope,
-                        inventory = inventory_name,
-                        schema    = schema_name)
+                        sweep_scope)
       return if !total_parts || sweep_scope.empty?
 
       TopologicalInventoryIngressApiClient::SaveInventory::Saver.new(:client => ingress_api_client, :logger => logger).save(
         :inventory => TopologicalInventoryIngressApiClient::Inventory.new(
-          :name               => inventory,
+          :name               => inventory_name,
           :schema             => TopologicalInventoryIngressApiClient::Schema.new(:name => schema),
           :source             => source,
           :collections        => [],
