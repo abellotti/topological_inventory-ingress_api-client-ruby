@@ -37,7 +37,7 @@ module TopologicalInventoryIngressApiClient
 
     protected
 
-    attr_accessor :connection_manager, :collector_threads, :finished, :limits,
+    attr_accessor :collector_threads, :finished, :limits,
                   :poll_time, :queue, :source
 
     def finished?
@@ -90,33 +90,57 @@ module TopologicalInventoryIngressApiClient
     def targeted_refresh(notices)
     end
 
-    def save_inventory(collections, refresh_state_uuid = nil, refresh_state_part_uuid = nil)
-      return if collections.empty?
+    def save_inventory(collections,
+                       refresh_state_uuid = nil,
+                       refresh_state_part_uuid = nil,
+                       inventory = inventory_name,
+                       schema    = schema_name)
+      return 0 if collections.empty?
 
-      ingress_api_client.save_inventory(
+      TopologicalInventoryIngressApiClient::SaveInventory::Saver.new(:client => ingress_api_client, :logger => logger).save(
         :inventory => TopologicalInventoryIngressApiClient::Inventory.new(
-          :name                    => "OCP",
-          :schema                  => TopologicalInventoryIngressApiClient::Schema.new(:name => schema_name),
+          :name                    => inventory,
+          :schema                  => TopologicalInventoryIngressApiClient::Schema.new(:name => schema),
           :source                  => source,
           :collections             => collections,
           :refresh_state_uuid      => refresh_state_uuid,
           :refresh_state_part_uuid => refresh_state_part_uuid,
-        )
+          )
       )
+    rescue => e
+      response_body = e.response_body if e.respond_to? :response_body
+      response_headers = e.response_headers if e.respond_to? :response_headers
+      logger.error("Error when sending payload to Ingress API. Error message: #{e.message}. Body: #{response_body}. Header: #{response_headers}")
+      raise e
     end
 
-    def sweep_inventory(refresh_state_uuid, total_parts, sweep_scope)
-      ingress_api_client.save_inventory(
+    def sweep_inventory(refresh_state_uuid,
+                        total_parts,
+                        sweep_scope,
+                        inventory = inventory_name,
+                        schema    = schema_name)
+      return if !total_parts || sweep_scope.empty?
+
+      TopologicalInventoryIngressApiClient::SaveInventory::Saver.new(:client => ingress_api_client, :logger => logger).save(
         :inventory => TopologicalInventoryIngressApiClient::Inventory.new(
-          :name               => "OCP",
-          :schema             => TopologicalInventoryIngressApiClient::Schema.new(:name => schema_name),
+          :name               => inventory,
+          :schema             => TopologicalInventoryIngressApiClient::Schema.new(:name => schema),
           :source             => source,
           :collections        => [],
           :refresh_state_uuid => refresh_state_uuid,
           :total_parts        => total_parts,
           :sweep_scope        => sweep_scope,
-        )
+          )
       )
+    rescue => e
+      response_body = e.response_body if e.respond_to? :response_body
+      response_headers = e.response_headers if e.respond_to? :response_headers
+      logger.error("Error when sending payload to Ingress API. Error message: #{e.message}. Body: #{response_body}. Header: #{response_headers}")
+      raise e
+    end
+
+    def inventory_name
+      "Default"
     end
 
     def schema_name
