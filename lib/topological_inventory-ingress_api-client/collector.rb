@@ -4,6 +4,7 @@ require "topological_inventory-ingress_api-client"
 require "topological_inventory-ingress_api-client/collector/inventory_collection_storage"
 require "topological_inventory-ingress_api-client/collector/inventory_collection_wrapper"
 require "topological_inventory-ingress_api-client/collector/parser"
+require "topological_inventory-ingress_api-client/save_inventory/saver"
 
 module TopologicalInventoryIngressApiClient
   class Collector
