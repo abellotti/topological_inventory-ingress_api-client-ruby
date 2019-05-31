@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vm** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
-**tag** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
+**tag** | [**TagReference**](TagReference.md) |  | 
+**vm** | [**VmReference**](VmReference.md) |  | 
 
 

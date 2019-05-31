@@ -14,63 +14,71 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class ServicePlan
-    attr_accessor :source_ref
+    attr_accessor :archived_at
 
-    attr_accessor :name
+    attr_accessor :create_json_schema
 
     attr_accessor :description
 
+    attr_accessor :extra
+
+    attr_accessor :name
+
+    attr_accessor :resource_timestamp
+
     attr_accessor :resource_version
+
+    attr_accessor :service_offering
 
     attr_accessor :source_created_at
 
     attr_accessor :source_deleted_at
 
-    attr_accessor :resource_timestamp
-
-    attr_accessor :create_json_schema
-
-    attr_accessor :update_json_schema
-
-    attr_accessor :service_offering
+    attr_accessor :source_ref
 
     attr_accessor :source_region
 
     attr_accessor :subscription
 
+    attr_accessor :update_json_schema
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'name' => :'name',
+        :'archived_at' => :'archived_at',
+        :'create_json_schema' => :'create_json_schema',
         :'description' => :'description',
+        :'extra' => :'extra',
+        :'name' => :'name',
+        :'resource_timestamp' => :'resource_timestamp',
         :'resource_version' => :'resource_version',
+        :'service_offering' => :'service_offering',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'resource_timestamp' => :'resource_timestamp',
-        :'create_json_schema' => :'create_json_schema',
-        :'update_json_schema' => :'update_json_schema',
-        :'service_offering' => :'service_offering',
+        :'source_ref' => :'source_ref',
         :'source_region' => :'source_region',
-        :'subscription' => :'subscription'
+        :'subscription' => :'subscription',
+        :'update_json_schema' => :'update_json_schema'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'name' => :'String',
+        :'archived_at' => :'DateTime',
+        :'create_json_schema' => :'Object',
         :'description' => :'String',
+        :'extra' => :'Object',
+        :'name' => :'String',
+        :'resource_timestamp' => :'DateTime',
         :'resource_version' => :'String',
+        :'service_offering' => :'ServiceOfferingReference',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'resource_timestamp' => :'DateTime',
-        :'create_json_schema' => :'Object',
-        :'update_json_schema' => :'Object',
-        :'service_offering' => :'InventoryObjectLazy',
-        :'source_region' => :'InventoryObjectLazy',
-        :'subscription' => :'InventoryObjectLazy'
+        :'source_ref' => :'String',
+        :'source_region' => :'SourceRegionReference',
+        :'subscription' => :'SubscriptionReference',
+        :'update_json_schema' => :'Object'
       }
     end
 
@@ -82,20 +90,36 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'create_json_schema')
+        self.create_json_schema = attributes[:'create_json_schema']
       end
 
       if attributes.has_key?(:'description')
         self.description = attributes[:'description']
       end
 
+      if attributes.has_key?(:'extra')
+        self.extra = attributes[:'extra']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
+      end
+
       if attributes.has_key?(:'resource_version')
         self.resource_version = attributes[:'resource_version']
+      end
+
+      if attributes.has_key?(:'service_offering')
+        self.service_offering = attributes[:'service_offering']
       end
 
       if attributes.has_key?(:'source_created_at')
@@ -106,20 +130,8 @@ module TopologicalInventoryIngressApiClient
         self.source_deleted_at = attributes[:'source_deleted_at']
       end
 
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
-      end
-
-      if attributes.has_key?(:'create_json_schema')
-        self.create_json_schema = attributes[:'create_json_schema']
-      end
-
-      if attributes.has_key?(:'update_json_schema')
-        self.update_json_schema = attributes[:'update_json_schema']
-      end
-
-      if attributes.has_key?(:'service_offering')
-        self.service_offering = attributes[:'service_offering']
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
 
       if attributes.has_key?(:'source_region')
@@ -128,6 +140,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'subscription')
         self.subscription = attributes[:'subscription']
+      end
+
+      if attributes.has_key?(:'update_json_schema')
+        self.update_json_schema = attributes[:'update_json_schema']
       end
     end
 
@@ -154,18 +170,20 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          name == o.name &&
+          archived_at == o.archived_at &&
+          create_json_schema == o.create_json_schema &&
           description == o.description &&
+          extra == o.extra &&
+          name == o.name &&
+          resource_timestamp == o.resource_timestamp &&
           resource_version == o.resource_version &&
+          service_offering == o.service_offering &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          resource_timestamp == o.resource_timestamp &&
-          create_json_schema == o.create_json_schema &&
-          update_json_schema == o.update_json_schema &&
-          service_offering == o.service_offering &&
+          source_ref == o.source_ref &&
           source_region == o.source_region &&
-          subscription == o.subscription
+          subscription == o.subscription &&
+          update_json_schema == o.update_json_schema
     end
 
     # @see the `==` method
@@ -177,7 +195,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, name, description, resource_version, source_created_at, source_deleted_at, resource_timestamp, create_json_schema, update_json_schema, service_offering, source_region, subscription].hash
+      [archived_at, create_json_schema, description, extra, name, resource_timestamp, resource_version, service_offering, source_created_at, source_deleted_at, source_ref, source_region, subscription, update_json_schema].hash
     end
 
     # Builds the object from hash

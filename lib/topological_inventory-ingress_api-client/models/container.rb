@@ -14,11 +14,11 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class Container
+    attr_accessor :archived_at
+
     attr_accessor :container_group
 
     attr_accessor :container_image
-
-    attr_accessor :name
 
     attr_accessor :cpu_limit
 
@@ -28,18 +28,21 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :memory_request
 
+    attr_accessor :name
+
     attr_accessor :resource_timestamp
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'archived_at' => :'archived_at',
         :'container_group' => :'container_group',
         :'container_image' => :'container_image',
-        :'name' => :'name',
         :'cpu_limit' => :'cpu_limit',
         :'cpu_request' => :'cpu_request',
         :'memory_limit' => :'memory_limit',
         :'memory_request' => :'memory_request',
+        :'name' => :'name',
         :'resource_timestamp' => :'resource_timestamp'
       }
     end
@@ -47,13 +50,14 @@ module TopologicalInventoryIngressApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'container_group' => :'InventoryObjectLazy',
-        :'container_image' => :'InventoryObjectLazy',
-        :'name' => :'String',
+        :'archived_at' => :'DateTime',
+        :'container_group' => :'ContainerGroupReference',
+        :'container_image' => :'ContainerImageReference',
         :'cpu_limit' => :'Float',
         :'cpu_request' => :'Float',
         :'memory_limit' => :'Integer',
         :'memory_request' => :'Integer',
+        :'name' => :'String',
         :'resource_timestamp' => :'DateTime'
       }
     end
@@ -66,16 +70,16 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
+      end
+
       if attributes.has_key?(:'container_group')
         self.container_group = attributes[:'container_group']
       end
 
       if attributes.has_key?(:'container_image')
         self.container_image = attributes[:'container_image']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
       end
 
       if attributes.has_key?(:'cpu_limit')
@@ -92,6 +96,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'memory_request')
         self.memory_request = attributes[:'memory_request']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.has_key?(:'resource_timestamp')
@@ -127,13 +135,14 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          archived_at == o.archived_at &&
           container_group == o.container_group &&
           container_image == o.container_image &&
-          name == o.name &&
           cpu_limit == o.cpu_limit &&
           cpu_request == o.cpu_request &&
           memory_limit == o.memory_limit &&
           memory_request == o.memory_request &&
+          name == o.name &&
           resource_timestamp == o.resource_timestamp
     end
 
@@ -146,7 +155,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [container_group, container_image, name, cpu_limit, cpu_request, memory_limit, memory_request, resource_timestamp].hash
+      [archived_at, container_group, container_image, cpu_limit, cpu_request, memory_limit, memory_request, name, resource_timestamp].hash
     end
 
     # Builds the object from hash

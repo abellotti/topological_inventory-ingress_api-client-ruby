@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
+**archived_at** | **DateTime** |  | [optional] 
 **name** | **String** |  | [optional] 
+**source_ref** | **String** |  | 
 
 

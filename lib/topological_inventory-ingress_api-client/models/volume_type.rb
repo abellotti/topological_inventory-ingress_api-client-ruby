@@ -14,31 +14,35 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class VolumeType
-    attr_accessor :source_ref
-
-    attr_accessor :name
+    attr_accessor :archived_at
 
     attr_accessor :description
 
     attr_accessor :extra
 
+    attr_accessor :name
+
+    attr_accessor :source_ref
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'name' => :'name',
+        :'archived_at' => :'archived_at',
         :'description' => :'description',
-        :'extra' => :'extra'
+        :'extra' => :'extra',
+        :'name' => :'name',
+        :'source_ref' => :'source_ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'name' => :'String',
+        :'archived_at' => :'DateTime',
         :'description' => :'String',
-        :'extra' => :'Object'
+        :'extra' => :'Object',
+        :'name' => :'String',
+        :'source_ref' => :'String'
       }
     end
 
@@ -50,12 +54,8 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
       end
 
       if attributes.has_key?(:'description')
@@ -64,6 +64,14 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'extra')
         self.extra = attributes[:'extra']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
     end
 
@@ -90,10 +98,11 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          name == o.name &&
+          archived_at == o.archived_at &&
           description == o.description &&
-          extra == o.extra
+          extra == o.extra &&
+          name == o.name &&
+          source_ref == o.source_ref
     end
 
     # @see the `==` method
@@ -105,7 +114,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, name, description, extra].hash
+      [archived_at, description, extra, name, source_ref].hash
     end
 
     # Builds the object from hash

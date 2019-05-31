@@ -14,55 +14,59 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class Flavor
-    # Unique identifier of the entity.
-    attr_accessor :source_ref
-
-    # Name of the flavor.
-    attr_accessor :name
-
-    # Size of one local disk in bytes. Total storage capacity of the entity is: disk_size * disk_count.
-    attr_accessor :disk_size
-
-    # Total count of disks. Total storage capacity of the entity is: disk_size * disk_count.
-    attr_accessor :disk_count
-
-    # Memory in bytes.
-    attr_accessor :memory
+    attr_accessor :archived_at
 
     # Number of cpus of the entity (vcpus for virtualized, cpus for baremetal).
     attr_accessor :cpus
 
+    # Total count of disks. Total storage capacity of the entity is: disk_size * disk_count.
+    attr_accessor :disk_count
+
+    # Size of one local disk in bytes. Total storage capacity of the entity is: disk_size * disk_count.
+    attr_accessor :disk_size
+
     # Free form document for storing SourceType's specific attributes.
     attr_accessor :extra
+
+    # Memory in bytes.
+    attr_accessor :memory
+
+    # Name of the flavor.
+    attr_accessor :name
 
     # Timestamp marking age of the data.
     attr_accessor :resource_timestamp
 
+    # Unique identifier of the entity.
+    attr_accessor :source_ref
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'name' => :'name',
-        :'disk_size' => :'disk_size',
-        :'disk_count' => :'disk_count',
-        :'memory' => :'memory',
+        :'archived_at' => :'archived_at',
         :'cpus' => :'cpus',
+        :'disk_count' => :'disk_count',
+        :'disk_size' => :'disk_size',
         :'extra' => :'extra',
-        :'resource_timestamp' => :'resource_timestamp'
+        :'memory' => :'memory',
+        :'name' => :'name',
+        :'resource_timestamp' => :'resource_timestamp',
+        :'source_ref' => :'source_ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'name' => :'String',
-        :'disk_size' => :'Integer',
-        :'disk_count' => :'Integer',
-        :'memory' => :'Integer',
+        :'archived_at' => :'DateTime',
         :'cpus' => :'Integer',
+        :'disk_count' => :'Integer',
+        :'disk_size' => :'Integer',
         :'extra' => :'Object',
-        :'resource_timestamp' => :'DateTime'
+        :'memory' => :'Integer',
+        :'name' => :'String',
+        :'resource_timestamp' => :'DateTime',
+        :'source_ref' => :'String'
       }
     end
 
@@ -74,36 +78,40 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'disk_size')
-        self.disk_size = attributes[:'disk_size']
-      end
-
-      if attributes.has_key?(:'disk_count')
-        self.disk_count = attributes[:'disk_count']
-      end
-
-      if attributes.has_key?(:'memory')
-        self.memory = attributes[:'memory']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
       end
 
       if attributes.has_key?(:'cpus')
         self.cpus = attributes[:'cpus']
       end
 
+      if attributes.has_key?(:'disk_count')
+        self.disk_count = attributes[:'disk_count']
+      end
+
+      if attributes.has_key?(:'disk_size')
+        self.disk_size = attributes[:'disk_size']
+      end
+
       if attributes.has_key?(:'extra')
         self.extra = attributes[:'extra']
       end
 
+      if attributes.has_key?(:'memory')
+        self.memory = attributes[:'memory']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
       if attributes.has_key?(:'resource_timestamp')
         self.resource_timestamp = attributes[:'resource_timestamp']
+      end
+
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
     end
 
@@ -130,14 +138,15 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          name == o.name &&
-          disk_size == o.disk_size &&
-          disk_count == o.disk_count &&
-          memory == o.memory &&
+          archived_at == o.archived_at &&
           cpus == o.cpus &&
+          disk_count == o.disk_count &&
+          disk_size == o.disk_size &&
           extra == o.extra &&
-          resource_timestamp == o.resource_timestamp
+          memory == o.memory &&
+          name == o.name &&
+          resource_timestamp == o.resource_timestamp &&
+          source_ref == o.source_ref
     end
 
     # @see the `==` method
@@ -149,7 +158,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, name, disk_size, disk_count, memory, cpus, extra, resource_timestamp].hash
+      [archived_at, cpus, disk_count, disk_size, extra, memory, name, resource_timestamp, source_ref].hash
     end
 
     # Builds the object from hash

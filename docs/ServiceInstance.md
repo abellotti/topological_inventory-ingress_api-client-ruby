@@ -3,15 +3,17 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
-**name** | **String** |  | 
+**archived_at** | **DateTime** |  | [optional] 
 **external_url** | **String** | URL of the service instance in the external source (OpenShift, Azure, AWS, ...). | [optional] 
+**extra** | [**Object**](.md) |  | [optional] 
+**name** | **String** |  | [optional] 
+**resource_timestamp** | **DateTime** |  | [optional] 
+**service_offering** | [**ServiceOfferingReference**](ServiceOfferingReference.md) |  | [optional] 
+**service_plan** | [**ServicePlanReference**](ServicePlanReference.md) |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
-**resource_timestamp** | **DateTime** |  | [optional] 
-**service_offering** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
-**service_plan** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
-**source_region** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
-**subscription** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
+**source_ref** | **String** |  | 
+**source_region** | [**SourceRegionReference**](SourceRegionReference.md) |  | [optional] 
+**subscription** | [**SubscriptionReference**](SubscriptionReference.md) |  | [optional] 
 
 

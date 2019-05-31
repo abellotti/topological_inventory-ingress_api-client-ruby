@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**container_image** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
-**tag** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
+**container_image** | [**ContainerImageReference**](ContainerImageReference.md) |  | 
+**tag** | [**TagReference**](TagReference.md) |  | 
 
 

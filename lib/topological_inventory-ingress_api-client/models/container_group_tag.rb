@@ -29,8 +29,8 @@ module TopologicalInventoryIngressApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'container_group' => :'InventoryObjectLazy',
-        :'tag' => :'InventoryObjectLazy'
+        :'container_group' => :'ContainerGroupReference',
+        :'tag' => :'TagReference'
       }
     end
 

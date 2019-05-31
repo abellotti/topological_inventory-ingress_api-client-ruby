@@ -3,21 +3,22 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
-**resource_version** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**cpus** | **Integer** |  | [optional] 
-**memory** | **Integer** |  | [optional] 
-**pods** | **Integer** |  | [optional] 
+**addresses** | **Array** |  | [optional] 
 **allocatable_cpus** | **Float** |  | [optional] 
 **allocatable_memory** | **Integer** |  | [optional] 
 **allocatable_pods** | **Integer** |  | [optional] 
-**conditions** | [**Object**](.md) |  | [optional] 
-**addresses** | [**Object**](.md) |  | [optional] 
+**archived_at** | **DateTime** |  | [optional] 
+**conditions** | **Array** |  | [optional] 
+**cpus** | **Integer** |  | [optional] 
+**lives_on** | [**CrossLinkVmReference**](CrossLinkVmReference.md) |  | [optional] 
+**memory** | **Integer** |  | [optional] 
+**name** | **String** |  | [optional] 
 **node_info** | [**Object**](.md) |  | [optional] 
-**lives_on** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
+**pods** | **Integer** |  | [optional] 
+**resource_timestamp** | **DateTime** |  | [optional] 
+**resource_version** | **String** |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
-**resource_timestamp** | **DateTime** |  | [optional] 
+**source_ref** | **String** |  | 
 
 

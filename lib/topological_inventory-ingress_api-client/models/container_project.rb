@@ -14,11 +14,13 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class ContainerProject
-    attr_accessor :source_ref
+    attr_accessor :archived_at
+
+    attr_accessor :display_name
 
     attr_accessor :name
 
-    attr_accessor :display_name
+    attr_accessor :resource_timestamp
 
     attr_accessor :resource_version
 
@@ -26,35 +28,37 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :source_deleted_at
 
-    attr_accessor :status_phase
+    attr_accessor :source_ref
 
-    attr_accessor :resource_timestamp
+    attr_accessor :status_phase
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'name' => :'name',
+        :'archived_at' => :'archived_at',
         :'display_name' => :'display_name',
+        :'name' => :'name',
+        :'resource_timestamp' => :'resource_timestamp',
         :'resource_version' => :'resource_version',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'status_phase' => :'status_phase',
-        :'resource_timestamp' => :'resource_timestamp'
+        :'source_ref' => :'source_ref',
+        :'status_phase' => :'status_phase'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'name' => :'String',
+        :'archived_at' => :'DateTime',
         :'display_name' => :'String',
+        :'name' => :'String',
+        :'resource_timestamp' => :'DateTime',
         :'resource_version' => :'String',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'status_phase' => :'String',
-        :'resource_timestamp' => :'DateTime'
+        :'source_ref' => :'String',
+        :'status_phase' => :'String'
       }
     end
 
@@ -66,16 +70,20 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
+      end
+
+      if attributes.has_key?(:'display_name')
+        self.display_name = attributes[:'display_name']
       end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
       end
 
       if attributes.has_key?(:'resource_version')
@@ -90,12 +98,12 @@ module TopologicalInventoryIngressApiClient
         self.source_deleted_at = attributes[:'source_deleted_at']
       end
 
-      if attributes.has_key?(:'status_phase')
-        self.status_phase = attributes[:'status_phase']
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
 
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
+      if attributes.has_key?(:'status_phase')
+        self.status_phase = attributes[:'status_phase']
       end
     end
 
@@ -107,10 +115,6 @@ module TopologicalInventoryIngressApiClient
         invalid_properties.push('invalid value for "source_ref", source_ref cannot be nil.')
       end
 
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -118,7 +122,6 @@ module TopologicalInventoryIngressApiClient
     # @return true if the model is valid
     def valid?
       return false if @source_ref.nil?
-      return false if @name.nil?
       true
     end
 
@@ -127,14 +130,15 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          name == o.name &&
+          archived_at == o.archived_at &&
           display_name == o.display_name &&
+          name == o.name &&
+          resource_timestamp == o.resource_timestamp &&
           resource_version == o.resource_version &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          status_phase == o.status_phase &&
-          resource_timestamp == o.resource_timestamp
+          source_ref == o.source_ref &&
+          status_phase == o.status_phase
     end
 
     # @see the `==` method
@@ -146,7 +150,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, name, display_name, resource_version, source_created_at, source_deleted_at, status_phase, resource_timestamp].hash
+      [archived_at, display_name, name, resource_timestamp, resource_version, source_created_at, source_deleted_at, source_ref, status_phase].hash
     end
 
     # Builds the object from hash
