@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_offering** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
-**tag** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
+**service_offering** | [**ServiceOfferingReference**](ServiceOfferingReference.md) |  | 
+**tag** | [**TagReference**](TagReference.md) |  | 
 
 

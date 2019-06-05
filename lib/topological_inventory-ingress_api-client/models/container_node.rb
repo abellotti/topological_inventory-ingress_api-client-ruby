@@ -14,17 +14,7 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class ContainerNode
-    attr_accessor :source_ref
-
-    attr_accessor :resource_version
-
-    attr_accessor :name
-
-    attr_accessor :cpus
-
-    attr_accessor :memory
-
-    attr_accessor :pods
+    attr_accessor :addresses
 
     attr_accessor :allocatable_cpus
 
@@ -32,61 +22,75 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :allocatable_pods
 
+    attr_accessor :archived_at
+
     attr_accessor :conditions
 
-    attr_accessor :addresses
+    attr_accessor :cpus
+
+    attr_accessor :lives_on
+
+    attr_accessor :memory
+
+    attr_accessor :name
 
     attr_accessor :node_info
 
-    attr_accessor :lives_on
+    attr_accessor :pods
+
+    attr_accessor :resource_timestamp
+
+    attr_accessor :resource_version
 
     attr_accessor :source_created_at
 
     attr_accessor :source_deleted_at
 
-    attr_accessor :resource_timestamp
+    attr_accessor :source_ref
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'resource_version' => :'resource_version',
-        :'name' => :'name',
-        :'cpus' => :'cpus',
-        :'memory' => :'memory',
-        :'pods' => :'pods',
+        :'addresses' => :'addresses',
         :'allocatable_cpus' => :'allocatable_cpus',
         :'allocatable_memory' => :'allocatable_memory',
         :'allocatable_pods' => :'allocatable_pods',
+        :'archived_at' => :'archived_at',
         :'conditions' => :'conditions',
-        :'addresses' => :'addresses',
-        :'node_info' => :'node_info',
+        :'cpus' => :'cpus',
         :'lives_on' => :'lives_on',
+        :'memory' => :'memory',
+        :'name' => :'name',
+        :'node_info' => :'node_info',
+        :'pods' => :'pods',
+        :'resource_timestamp' => :'resource_timestamp',
+        :'resource_version' => :'resource_version',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'resource_timestamp' => :'resource_timestamp'
+        :'source_ref' => :'source_ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'resource_version' => :'String',
-        :'name' => :'String',
-        :'cpus' => :'Integer',
-        :'memory' => :'Integer',
-        :'pods' => :'Integer',
+        :'addresses' => :'Array',
         :'allocatable_cpus' => :'Float',
         :'allocatable_memory' => :'Integer',
         :'allocatable_pods' => :'Integer',
-        :'conditions' => :'Object',
-        :'addresses' => :'Object',
+        :'archived_at' => :'DateTime',
+        :'conditions' => :'Array',
+        :'cpus' => :'Integer',
+        :'lives_on' => :'CrossLinkVmReference',
+        :'memory' => :'Integer',
+        :'name' => :'String',
         :'node_info' => :'Object',
-        :'lives_on' => :'InventoryObjectLazy',
+        :'pods' => :'Integer',
+        :'resource_timestamp' => :'DateTime',
+        :'resource_version' => :'String',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'resource_timestamp' => :'DateTime'
+        :'source_ref' => :'String'
       }
     end
 
@@ -98,28 +102,8 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'resource_version')
-        self.resource_version = attributes[:'resource_version']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'cpus')
-        self.cpus = attributes[:'cpus']
-      end
-
-      if attributes.has_key?(:'memory')
-        self.memory = attributes[:'memory']
-      end
-
-      if attributes.has_key?(:'pods')
-        self.pods = attributes[:'pods']
+      if attributes.has_key?(:'addresses')
+        self.addresses = attributes[:'addresses']
       end
 
       if attributes.has_key?(:'allocatable_cpus')
@@ -134,20 +118,44 @@ module TopologicalInventoryIngressApiClient
         self.allocatable_pods = attributes[:'allocatable_pods']
       end
 
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
+      end
+
       if attributes.has_key?(:'conditions')
         self.conditions = attributes[:'conditions']
       end
 
-      if attributes.has_key?(:'addresses')
-        self.addresses = attributes[:'addresses']
+      if attributes.has_key?(:'cpus')
+        self.cpus = attributes[:'cpus']
+      end
+
+      if attributes.has_key?(:'lives_on')
+        self.lives_on = attributes[:'lives_on']
+      end
+
+      if attributes.has_key?(:'memory')
+        self.memory = attributes[:'memory']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.has_key?(:'node_info')
         self.node_info = attributes[:'node_info']
       end
 
-      if attributes.has_key?(:'lives_on')
-        self.lives_on = attributes[:'lives_on']
+      if attributes.has_key?(:'pods')
+        self.pods = attributes[:'pods']
+      end
+
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
+      end
+
+      if attributes.has_key?(:'resource_version')
+        self.resource_version = attributes[:'resource_version']
       end
 
       if attributes.has_key?(:'source_created_at')
@@ -158,8 +166,8 @@ module TopologicalInventoryIngressApiClient
         self.source_deleted_at = attributes[:'source_deleted_at']
       end
 
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
     end
 
@@ -186,22 +194,23 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          resource_version == o.resource_version &&
-          name == o.name &&
-          cpus == o.cpus &&
-          memory == o.memory &&
-          pods == o.pods &&
+          addresses == o.addresses &&
           allocatable_cpus == o.allocatable_cpus &&
           allocatable_memory == o.allocatable_memory &&
           allocatable_pods == o.allocatable_pods &&
+          archived_at == o.archived_at &&
           conditions == o.conditions &&
-          addresses == o.addresses &&
-          node_info == o.node_info &&
+          cpus == o.cpus &&
           lives_on == o.lives_on &&
+          memory == o.memory &&
+          name == o.name &&
+          node_info == o.node_info &&
+          pods == o.pods &&
+          resource_timestamp == o.resource_timestamp &&
+          resource_version == o.resource_version &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          resource_timestamp == o.resource_timestamp
+          source_ref == o.source_ref
     end
 
     # @see the `==` method
@@ -213,7 +222,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, resource_version, name, cpus, memory, pods, allocatable_cpus, allocatable_memory, allocatable_pods, conditions, addresses, node_info, lives_on, source_created_at, source_deleted_at, resource_timestamp].hash
+      [addresses, allocatable_cpus, allocatable_memory, allocatable_pods, archived_at, conditions, cpus, lives_on, memory, name, node_info, pods, resource_timestamp, resource_version, source_created_at, source_deleted_at, source_ref].hash
     end
 
     # Builds the object from hash

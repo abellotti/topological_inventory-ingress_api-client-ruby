@@ -16,10 +16,6 @@ module TopologicalInventoryIngressApiClient
   class InventoryCollection
     attr_accessor :name
 
-    attr_accessor :manager_uuids
-
-    attr_accessor :all_manager_uuids
-
     attr_accessor :data
 
     attr_accessor :partial_data
@@ -28,8 +24,6 @@ module TopologicalInventoryIngressApiClient
     def self.attribute_map
       {
         :'name' => :'name',
-        :'manager_uuids' => :'manager_uuids',
-        :'all_manager_uuids' => :'all_manager_uuids',
         :'data' => :'data',
         :'partial_data' => :'partial_data'
       }
@@ -39,8 +33,6 @@ module TopologicalInventoryIngressApiClient
     def self.openapi_types
       {
         :'name' => :'String',
-        :'manager_uuids' => :'Array<String>',
-        :'all_manager_uuids' => :'Array<String>',
         :'data' => :'Array<InventoryObject>',
         :'partial_data' => :'Array<InventoryObject>'
       }
@@ -56,18 +48,6 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'manager_uuids')
-        if (value = attributes[:'manager_uuids']).is_a?(Array)
-          self.manager_uuids = value
-        end
-      end
-
-      if attributes.has_key?(:'all_manager_uuids')
-        if (value = attributes[:'all_manager_uuids']).is_a?(Array)
-          self.all_manager_uuids = value
-        end
       end
 
       if attributes.has_key?(:'data')
@@ -107,8 +87,6 @@ module TopologicalInventoryIngressApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          manager_uuids == o.manager_uuids &&
-          all_manager_uuids == o.all_manager_uuids &&
           data == o.data &&
           partial_data == o.partial_data
     end
@@ -122,7 +100,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, manager_uuids, all_manager_uuids, data, partial_data].hash
+      [name, data, partial_data].hash
     end
 
     # Builds the object from hash

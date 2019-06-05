@@ -14,77 +14,85 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class Vm
-    attr_accessor :source_ref
-
-    attr_accessor :uid_ems
-
-    attr_accessor :name
-
-    attr_accessor :hostname
-
-    attr_accessor :description
-
-    attr_accessor :power_state
+    attr_accessor :archived_at
 
     attr_accessor :cpus
 
-    attr_accessor :memory
+    attr_accessor :description
 
-    # Array of all MAC addresses of this Vm
-    attr_accessor :mac_addresses
+    attr_accessor :extra
+
+    attr_accessor :flavor
 
     # UUID of the host in host inventory
     attr_accessor :host_inventory_uuid
 
-    attr_accessor :extra
+    attr_accessor :hostname
+
+    # Array of all MAC addresses of this Vm
+    attr_accessor :mac_addresses
+
+    attr_accessor :memory
+
+    attr_accessor :name
+
+    attr_accessor :orchestration_stack
+
+    attr_accessor :power_state
+
+    attr_accessor :resource_timestamp
 
     attr_accessor :source_created_at
 
     attr_accessor :source_deleted_at
 
-    attr_accessor :resource_timestamp
+    attr_accessor :source_ref
 
-    attr_accessor :flavor
+    attr_accessor :uid_ems
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'uid_ems' => :'uid_ems',
-        :'name' => :'name',
-        :'hostname' => :'hostname',
-        :'description' => :'description',
-        :'power_state' => :'power_state',
+        :'archived_at' => :'archived_at',
         :'cpus' => :'cpus',
-        :'memory' => :'memory',
-        :'mac_addresses' => :'mac_addresses',
-        :'host_inventory_uuid' => :'host_inventory_uuid',
+        :'description' => :'description',
         :'extra' => :'extra',
+        :'flavor' => :'flavor',
+        :'host_inventory_uuid' => :'host_inventory_uuid',
+        :'hostname' => :'hostname',
+        :'mac_addresses' => :'mac_addresses',
+        :'memory' => :'memory',
+        :'name' => :'name',
+        :'orchestration_stack' => :'orchestration_stack',
+        :'power_state' => :'power_state',
+        :'resource_timestamp' => :'resource_timestamp',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'resource_timestamp' => :'resource_timestamp',
-        :'flavor' => :'flavor'
+        :'source_ref' => :'source_ref',
+        :'uid_ems' => :'uid_ems'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'uid_ems' => :'String',
-        :'name' => :'String',
-        :'hostname' => :'String',
-        :'description' => :'String',
-        :'power_state' => :'String',
+        :'archived_at' => :'DateTime',
         :'cpus' => :'Integer',
-        :'memory' => :'Integer',
-        :'mac_addresses' => :'Array<String>',
-        :'host_inventory_uuid' => :'String',
+        :'description' => :'String',
         :'extra' => :'Object',
+        :'flavor' => :'FlavorReference',
+        :'host_inventory_uuid' => :'String',
+        :'hostname' => :'String',
+        :'mac_addresses' => :'Array<String>',
+        :'memory' => :'Integer',
+        :'name' => :'String',
+        :'orchestration_stack' => :'OrchestrationStackReference',
+        :'power_state' => :'String',
+        :'resource_timestamp' => :'DateTime',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'resource_timestamp' => :'DateTime',
-        :'flavor' => :'InventoryObjectLazy'
+        :'source_ref' => :'String',
+        :'uid_ems' => :'String'
       }
     end
 
@@ -96,36 +104,32 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'uid_ems')
-        self.uid_ems = attributes[:'uid_ems']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'hostname')
-        self.hostname = attributes[:'hostname']
-      end
-
-      if attributes.has_key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.has_key?(:'power_state')
-        self.power_state = attributes[:'power_state']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
       end
 
       if attributes.has_key?(:'cpus')
         self.cpus = attributes[:'cpus']
       end
 
-      if attributes.has_key?(:'memory')
-        self.memory = attributes[:'memory']
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.has_key?(:'extra')
+        self.extra = attributes[:'extra']
+      end
+
+      if attributes.has_key?(:'flavor')
+        self.flavor = attributes[:'flavor']
+      end
+
+      if attributes.has_key?(:'host_inventory_uuid')
+        self.host_inventory_uuid = attributes[:'host_inventory_uuid']
+      end
+
+      if attributes.has_key?(:'hostname')
+        self.hostname = attributes[:'hostname']
       end
 
       if attributes.has_key?(:'mac_addresses')
@@ -134,12 +138,24 @@ module TopologicalInventoryIngressApiClient
         end
       end
 
-      if attributes.has_key?(:'host_inventory_uuid')
-        self.host_inventory_uuid = attributes[:'host_inventory_uuid']
+      if attributes.has_key?(:'memory')
+        self.memory = attributes[:'memory']
       end
 
-      if attributes.has_key?(:'extra')
-        self.extra = attributes[:'extra']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'orchestration_stack')
+        self.orchestration_stack = attributes[:'orchestration_stack']
+      end
+
+      if attributes.has_key?(:'power_state')
+        self.power_state = attributes[:'power_state']
+      end
+
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
       end
 
       if attributes.has_key?(:'source_created_at')
@@ -150,12 +166,12 @@ module TopologicalInventoryIngressApiClient
         self.source_deleted_at = attributes[:'source_deleted_at']
       end
 
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
 
-      if attributes.has_key?(:'flavor')
-        self.flavor = attributes[:'flavor']
+      if attributes.has_key?(:'uid_ems')
+        self.uid_ems = attributes[:'uid_ems']
       end
     end
 
@@ -182,21 +198,23 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          uid_ems == o.uid_ems &&
-          name == o.name &&
-          hostname == o.hostname &&
-          description == o.description &&
-          power_state == o.power_state &&
+          archived_at == o.archived_at &&
           cpus == o.cpus &&
-          memory == o.memory &&
-          mac_addresses == o.mac_addresses &&
-          host_inventory_uuid == o.host_inventory_uuid &&
+          description == o.description &&
           extra == o.extra &&
+          flavor == o.flavor &&
+          host_inventory_uuid == o.host_inventory_uuid &&
+          hostname == o.hostname &&
+          mac_addresses == o.mac_addresses &&
+          memory == o.memory &&
+          name == o.name &&
+          orchestration_stack == o.orchestration_stack &&
+          power_state == o.power_state &&
+          resource_timestamp == o.resource_timestamp &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          resource_timestamp == o.resource_timestamp &&
-          flavor == o.flavor
+          source_ref == o.source_ref &&
+          uid_ems == o.uid_ems
     end
 
     # @see the `==` method
@@ -208,7 +226,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, uid_ems, name, hostname, description, power_state, cpus, memory, mac_addresses, host_inventory_uuid, extra, source_created_at, source_deleted_at, resource_timestamp, flavor].hash
+      [archived_at, cpus, description, extra, flavor, host_inventory_uuid, hostname, mac_addresses, memory, name, orchestration_stack, power_state, resource_timestamp, source_created_at, source_deleted_at, source_ref, uid_ems].hash
     end
 
     # Builds the object from hash

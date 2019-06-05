@@ -3,15 +3,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
-**name** | **String** |  | [optional] 
-**state** | **String** |  | [optional] 
-**size** | **Integer** |  | [optional] 
+**archived_at** | **DateTime** |  | [optional] 
 **extra** | [**Object**](.md) |  | [optional] 
+**name** | **String** |  | [optional] 
+**resource_timestamp** | **DateTime** |  | [optional] 
+**size** | **Integer** |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
-**resource_timestamp** | **DateTime** |  | [optional] 
-**volume_type** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
-**source_region** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
+**source_ref** | **String** |  | 
+**source_region** | [**SourceRegionReference**](SourceRegionReference.md) |  | [optional] 
+**state** | **String** |  | [optional] 
+**volume_type** | [**VolumeTypeReference**](VolumeTypeReference.md) |  | [optional] 
 
 

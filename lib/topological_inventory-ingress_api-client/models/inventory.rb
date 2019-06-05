@@ -49,12 +49,12 @@ module TopologicalInventoryIngressApiClient
       {
         :'name' => :'String',
         :'schema' => :'Schema',
-        :'source' => :'Source',
+        :'source' => :'String',
         :'refresh_state_uuid' => :'String',
         :'refresh_state_part_uuid' => :'String',
         :'total_parts' => :'Integer',
         :'sweep_scope' => :'Object',
-        :'collections' => :'Array<InventoryCollection>'
+        :'collections' => :'Array<Object>'
       }
     end
 

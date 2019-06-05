@@ -14,23 +14,23 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class ServiceOfferingIcon
-    attr_accessor :source_ref
-
     attr_accessor :data
+
+    attr_accessor :source_ref
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'data' => :'data'
+        :'data' => :'data',
+        :'source_ref' => :'source_ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'data' => :'String'
+        :'data' => :'String',
+        :'source_ref' => :'String'
       }
     end
 
@@ -42,12 +42,12 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
       if attributes.has_key?(:'data')
         self.data = attributes[:'data']
+      end
+
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
     end
 
@@ -74,8 +74,8 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          data == o.data
+          data == o.data &&
+          source_ref == o.source_ref
     end
 
     # @see the `==` method
@@ -87,7 +87,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, data].hash
+      [data, source_ref].hash
     end
 
     # Builds the object from hash

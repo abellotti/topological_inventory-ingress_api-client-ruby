@@ -14,75 +14,79 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class ServiceOffering
-    attr_accessor :source_ref
-
-    attr_accessor :name
+    attr_accessor :archived_at
 
     attr_accessor :description
 
     attr_accessor :display_name
 
+    attr_accessor :distributor
+
     attr_accessor :documentation_url
+
+    attr_accessor :extra
 
     attr_accessor :long_description
 
-    attr_accessor :distributor
+    attr_accessor :name
 
-    attr_accessor :support_url
+    attr_accessor :resource_timestamp
 
-    attr_accessor :extra
+    attr_accessor :service_offering_icon
 
     attr_accessor :source_created_at
 
     attr_accessor :source_deleted_at
 
-    attr_accessor :resource_timestamp
+    attr_accessor :source_ref
 
     attr_accessor :source_region
 
     attr_accessor :subscription
 
-    attr_accessor :service_offering_icon
+    attr_accessor :support_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'source_ref' => :'source_ref',
-        :'name' => :'name',
+        :'archived_at' => :'archived_at',
         :'description' => :'description',
         :'display_name' => :'display_name',
-        :'documentation_url' => :'documentation_url',
-        :'long_description' => :'long_description',
         :'distributor' => :'distributor',
-        :'support_url' => :'support_url',
+        :'documentation_url' => :'documentation_url',
         :'extra' => :'extra',
+        :'long_description' => :'long_description',
+        :'name' => :'name',
+        :'resource_timestamp' => :'resource_timestamp',
+        :'service_offering_icon' => :'service_offering_icon',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'resource_timestamp' => :'resource_timestamp',
+        :'source_ref' => :'source_ref',
         :'source_region' => :'source_region',
         :'subscription' => :'subscription',
-        :'service_offering_icon' => :'service_offering_icon'
+        :'support_url' => :'support_url'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'source_ref' => :'String',
-        :'name' => :'String',
+        :'archived_at' => :'DateTime',
         :'description' => :'String',
         :'display_name' => :'String',
-        :'documentation_url' => :'String',
-        :'long_description' => :'String',
         :'distributor' => :'String',
-        :'support_url' => :'String',
+        :'documentation_url' => :'String',
         :'extra' => :'Object',
+        :'long_description' => :'String',
+        :'name' => :'String',
+        :'resource_timestamp' => :'DateTime',
+        :'service_offering_icon' => :'ServiceOfferingIconReference',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'resource_timestamp' => :'DateTime',
-        :'source_region' => :'InventoryObjectLazy',
-        :'subscription' => :'InventoryObjectLazy',
-        :'service_offering_icon' => :'InventoryObjectLazy'
+        :'source_ref' => :'String',
+        :'source_region' => :'SourceRegionReference',
+        :'subscription' => :'SubscriptionReference',
+        :'support_url' => :'String'
       }
     end
 
@@ -94,12 +98,8 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
       end
 
       if attributes.has_key?(:'description')
@@ -110,24 +110,32 @@ module TopologicalInventoryIngressApiClient
         self.display_name = attributes[:'display_name']
       end
 
+      if attributes.has_key?(:'distributor')
+        self.distributor = attributes[:'distributor']
+      end
+
       if attributes.has_key?(:'documentation_url')
         self.documentation_url = attributes[:'documentation_url']
+      end
+
+      if attributes.has_key?(:'extra')
+        self.extra = attributes[:'extra']
       end
 
       if attributes.has_key?(:'long_description')
         self.long_description = attributes[:'long_description']
       end
 
-      if attributes.has_key?(:'distributor')
-        self.distributor = attributes[:'distributor']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'support_url')
-        self.support_url = attributes[:'support_url']
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
       end
 
-      if attributes.has_key?(:'extra')
-        self.extra = attributes[:'extra']
+      if attributes.has_key?(:'service_offering_icon')
+        self.service_offering_icon = attributes[:'service_offering_icon']
       end
 
       if attributes.has_key?(:'source_created_at')
@@ -138,8 +146,8 @@ module TopologicalInventoryIngressApiClient
         self.source_deleted_at = attributes[:'source_deleted_at']
       end
 
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
 
       if attributes.has_key?(:'source_region')
@@ -150,8 +158,8 @@ module TopologicalInventoryIngressApiClient
         self.subscription = attributes[:'subscription']
       end
 
-      if attributes.has_key?(:'service_offering_icon')
-        self.service_offering_icon = attributes[:'service_offering_icon']
+      if attributes.has_key?(:'support_url')
+        self.support_url = attributes[:'support_url']
       end
     end
 
@@ -178,21 +186,22 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          source_ref == o.source_ref &&
-          name == o.name &&
+          archived_at == o.archived_at &&
           description == o.description &&
           display_name == o.display_name &&
-          documentation_url == o.documentation_url &&
-          long_description == o.long_description &&
           distributor == o.distributor &&
-          support_url == o.support_url &&
+          documentation_url == o.documentation_url &&
           extra == o.extra &&
+          long_description == o.long_description &&
+          name == o.name &&
+          resource_timestamp == o.resource_timestamp &&
+          service_offering_icon == o.service_offering_icon &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          resource_timestamp == o.resource_timestamp &&
+          source_ref == o.source_ref &&
           source_region == o.source_region &&
           subscription == o.subscription &&
-          service_offering_icon == o.service_offering_icon
+          support_url == o.support_url
     end
 
     # @see the `==` method
@@ -204,7 +213,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [source_ref, name, description, display_name, documentation_url, long_description, distributor, support_url, extra, source_created_at, source_deleted_at, resource_timestamp, source_region, subscription, service_offering_icon].hash
+      [archived_at, description, display_name, distributor, documentation_url, extra, long_description, name, resource_timestamp, service_offering_icon, source_created_at, source_deleted_at, source_ref, source_region, subscription, support_url].hash
     end
 
     # Builds the object from hash

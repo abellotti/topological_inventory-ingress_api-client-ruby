@@ -14,23 +14,23 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class VmTag
-    attr_accessor :vm
-
     attr_accessor :tag
+
+    attr_accessor :vm
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'vm' => :'vm',
-        :'tag' => :'tag'
+        :'tag' => :'tag',
+        :'vm' => :'vm'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'vm' => :'InventoryObjectLazy',
-        :'tag' => :'InventoryObjectLazy'
+        :'tag' => :'TagReference',
+        :'vm' => :'VmReference'
       }
     end
 
@@ -42,12 +42,12 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'vm')
-        self.vm = attributes[:'vm']
-      end
-
       if attributes.has_key?(:'tag')
         self.tag = attributes[:'tag']
+      end
+
+      if attributes.has_key?(:'vm')
+        self.vm = attributes[:'vm']
       end
     end
 
@@ -55,12 +55,12 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @vm.nil?
-        invalid_properties.push('invalid value for "vm", vm cannot be nil.')
-      end
-
       if @tag.nil?
         invalid_properties.push('invalid value for "tag", tag cannot be nil.')
+      end
+
+      if @vm.nil?
+        invalid_properties.push('invalid value for "vm", vm cannot be nil.')
       end
 
       invalid_properties
@@ -69,8 +69,8 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @vm.nil?
       return false if @tag.nil?
+      return false if @vm.nil?
       true
     end
 
@@ -79,8 +79,8 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          vm == o.vm &&
-          tag == o.tag
+          tag == o.tag &&
+          vm == o.vm
     end
 
     # @see the `==` method
@@ -92,7 +92,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vm, tag].hash
+      [tag, vm].hash
     end
 
     # Builds the object from hash

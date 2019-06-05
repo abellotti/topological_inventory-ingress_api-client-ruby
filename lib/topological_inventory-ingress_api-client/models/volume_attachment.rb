@@ -14,53 +14,31 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class VolumeAttachment
-    attr_accessor :vm
-
-    attr_accessor :volume
-
     attr_accessor :device
 
     attr_accessor :state
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    attr_accessor :vm
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :volume
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'vm' => :'vm',
-        :'volume' => :'volume',
         :'device' => :'device',
-        :'state' => :'state'
+        :'state' => :'state',
+        :'vm' => :'vm',
+        :'volume' => :'volume'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'vm' => :'InventoryObjectLazy',
-        :'volume' => :'InventoryObjectLazy',
         :'device' => :'String',
-        :'state' => :'String'
+        :'state' => :'String',
+        :'vm' => :'VmReference',
+        :'volume' => :'VolumeReference'
       }
     end
 
@@ -72,20 +50,20 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'vm')
-        self.vm = attributes[:'vm']
-      end
-
-      if attributes.has_key?(:'volume')
-        self.volume = attributes[:'volume']
-      end
-
       if attributes.has_key?(:'device')
         self.device = attributes[:'device']
       end
 
       if attributes.has_key?(:'state')
         self.state = attributes[:'state']
+      end
+
+      if attributes.has_key?(:'vm')
+        self.vm = attributes[:'vm']
+      end
+
+      if attributes.has_key?(:'volume')
+        self.volume = attributes[:'volume']
       end
     end
 
@@ -109,19 +87,7 @@ module TopologicalInventoryIngressApiClient
     def valid?
       return false if @vm.nil?
       return false if @volume.nil?
-      state_validator = EnumAttributeValidator.new('String', ['attaching', 'attached', 'detaching', 'unknown'])
-      return false unless state_validator.valid?(@state)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ['attaching', 'attached', 'detaching', 'unknown'])
-      unless validator.valid?(state)
-        fail ArgumentError, 'invalid value for "state", must be one of #{validator.allowable_values}.'
-      end
-      @state = state
     end
 
     # Checks equality by comparing each attribute.
@@ -129,10 +95,10 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          vm == o.vm &&
-          volume == o.volume &&
           device == o.device &&
-          state == o.state
+          state == o.state &&
+          vm == o.vm &&
+          volume == o.volume
     end
 
     # @see the `==` method
@@ -144,7 +110,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vm, volume, device, state].hash
+      [device, state, vm, volume].hash
     end
 
     # Builds the object from hash

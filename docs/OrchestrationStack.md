@@ -3,11 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
-**name** | **String** |  | [optional] 
+**archived_at** | **DateTime** |  | [optional] 
 **description** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
+**resource_timestamp** | **DateTime** |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
-**resource_timestamp** | **DateTime** |  | [optional] 
+**source_ref** | **String** |  | 
 
 

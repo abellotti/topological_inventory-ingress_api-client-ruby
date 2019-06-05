@@ -14,27 +14,31 @@ require 'date'
 
 module TopologicalInventoryIngressApiClient
   class Tag
+    attr_accessor :description
+
     attr_accessor :name
 
-    attr_accessor :value
-
     attr_accessor :namespace
+
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'description' => :'description',
         :'name' => :'name',
-        :'value' => :'value',
-        :'namespace' => :'namespace'
+        :'namespace' => :'namespace',
+        :'value' => :'value'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'description' => :'String',
         :'name' => :'String',
-        :'value' => :'String',
-        :'namespace' => :'String'
+        :'namespace' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -46,16 +50,20 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
-      end
-
       if attributes.has_key?(:'namespace')
         self.namespace = attributes[:'namespace']
+      end
+
+      if attributes.has_key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -71,6 +79,10 @@ module TopologicalInventoryIngressApiClient
         invalid_properties.push('invalid value for "namespace", namespace cannot be nil.')
       end
 
+      if @value.nil?
+        invalid_properties.push('invalid value for "value", value cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -79,6 +91,7 @@ module TopologicalInventoryIngressApiClient
     def valid?
       return false if @name.nil?
       return false if @namespace.nil?
+      return false if @value.nil?
       true
     end
 
@@ -87,9 +100,10 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          description == o.description &&
           name == o.name &&
-          value == o.value &&
-          namespace == o.namespace
+          namespace == o.namespace &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -101,7 +115,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, value, namespace].hash
+      [description, name, namespace, value].hash
     end
 
     # Builds the object from hash

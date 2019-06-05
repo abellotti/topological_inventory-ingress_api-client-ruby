@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vm** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
-**volume** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | 
 **device** | **String** |  | [optional] 
 **state** | **String** |  | [optional] 
+**vm** | [**VmReference**](VmReference.md) |  | 
+**volume** | [**VolumeReference**](VolumeReference.md) |  | 
 
 

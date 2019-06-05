@@ -3,9 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
-**name** | **String** |  | [optional] 
+**archived_at** | **DateTime** |  | [optional] 
 **description** | **String** |  | [optional] 
 **extra** | [**Object**](.md) |  | [optional] 
+**name** | **String** |  | [optional] 
+**source_ref** | **String** |  | 
 
 

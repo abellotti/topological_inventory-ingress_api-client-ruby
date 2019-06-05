@@ -20,21 +20,12 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :ref
 
-    attr_accessor :key
-
-    attr_accessor :default
-
-    attr_accessor :transform_nested_lazy_finds
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'inventory_collection_name' => :'inventory_collection_name',
         :'reference' => :'reference',
-        :'ref' => :'ref',
-        :'key' => :'key',
-        :'default' => :'default',
-        :'transform_nested_lazy_finds' => :'transform_nested_lazy_finds'
+        :'ref' => :'ref'
       }
     end
 
@@ -43,10 +34,7 @@ module TopologicalInventoryIngressApiClient
       {
         :'inventory_collection_name' => :'String',
         :'reference' => :'Object',
-        :'ref' => :'String',
-        :'key' => :'String',
-        :'default' => :'Object',
-        :'transform_nested_lazy_finds' => :'BOOLEAN'
+        :'ref' => :'String'
       }
     end
 
@@ -69,18 +57,6 @@ module TopologicalInventoryIngressApiClient
       if attributes.has_key?(:'ref')
         self.ref = attributes[:'ref']
       end
-
-      if attributes.has_key?(:'key')
-        self.key = attributes[:'key']
-      end
-
-      if attributes.has_key?(:'default')
-        self.default = attributes[:'default']
-      end
-
-      if attributes.has_key?(:'transform_nested_lazy_finds')
-        self.transform_nested_lazy_finds = attributes[:'transform_nested_lazy_finds']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,6 +67,14 @@ module TopologicalInventoryIngressApiClient
         invalid_properties.push('invalid value for "inventory_collection_name", inventory_collection_name cannot be nil.')
       end
 
+      if @reference.nil?
+        invalid_properties.push('invalid value for "reference", reference cannot be nil.')
+      end
+
+      if @ref.nil?
+        invalid_properties.push('invalid value for "ref", ref cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -98,6 +82,8 @@ module TopologicalInventoryIngressApiClient
     # @return true if the model is valid
     def valid?
       return false if @inventory_collection_name.nil?
+      return false if @reference.nil?
+      return false if @ref.nil?
       true
     end
 
@@ -108,10 +94,7 @@ module TopologicalInventoryIngressApiClient
       self.class == o.class &&
           inventory_collection_name == o.inventory_collection_name &&
           reference == o.reference &&
-          ref == o.ref &&
-          key == o.key &&
-          default == o.default &&
-          transform_nested_lazy_finds == o.transform_nested_lazy_finds
+          ref == o.ref
     end
 
     # @see the `==` method
@@ -123,7 +106,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [inventory_collection_name, reference, ref, key, default, transform_nested_lazy_finds].hash
+      [inventory_collection_name, reference, ref].hash
     end
 
     # Builds the object from hash

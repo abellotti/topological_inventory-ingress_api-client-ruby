@@ -3,14 +3,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_ref** | **String** |  | 
+**archived_at** | **DateTime** |  | [optional] 
+**container_project** | **Object** |  | [optional] 
 **name** | **String** |  | [optional] 
+**resource_timestamp** | **DateTime** |  | [optional] 
 **resource_version** | **String** |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
-**status** | [**Object**](.md) |  | [optional] 
+**source_ref** | **String** |  | 
 **spec** | [**Object**](.md) |  | [optional] 
-**resource_timestamp** | **DateTime** |  | [optional] 
-**container_project** | [**InventoryObjectLazy**](InventoryObjectLazy.md) |  | [optional] 
+**status** | [**Object**](.md) |  | [optional] 
 
 
