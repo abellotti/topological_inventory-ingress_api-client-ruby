@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addresses** | **Array** |  | [optional] 
+**addresses** | **Array&lt;Object&gt;** |  | [optional] 
 **allocatable_cpus** | **Float** |  | [optional] 
 **allocatable_memory** | **Integer** |  | [optional] 
 **allocatable_pods** | **Integer** |  | [optional] 
 **archived_at** | **DateTime** |  | [optional] 
-**conditions** | **Array** |  | [optional] 
+**conditions** | **Array&lt;Object&gt;** |  | [optional] 
 **cpus** | **Integer** |  | [optional] 
 **lives_on** | [**CrossLinkVmReference**](CrossLinkVmReference.md) |  | [optional] 
 **memory** | **Integer** |  | [optional] 

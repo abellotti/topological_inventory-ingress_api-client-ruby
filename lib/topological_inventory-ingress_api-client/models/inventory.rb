@@ -20,6 +20,8 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :source
 
+    attr_accessor :source_type
+
     attr_accessor :refresh_state_uuid
 
     attr_accessor :refresh_state_part_uuid
@@ -36,6 +38,7 @@ module TopologicalInventoryIngressApiClient
         :'name' => :'name',
         :'schema' => :'schema',
         :'source' => :'source',
+        :'source_type' => :'source_type',
         :'refresh_state_uuid' => :'refresh_state_uuid',
         :'refresh_state_part_uuid' => :'refresh_state_part_uuid',
         :'total_parts' => :'total_parts',
@@ -50,6 +53,7 @@ module TopologicalInventoryIngressApiClient
         :'name' => :'String',
         :'schema' => :'Schema',
         :'source' => :'String',
+        :'source_type' => :'String',
         :'refresh_state_uuid' => :'String',
         :'refresh_state_part_uuid' => :'String',
         :'total_parts' => :'Integer',
@@ -76,6 +80,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'source')
         self.source = attributes[:'source']
+      end
+
+      if attributes.has_key?(:'source_type')
+        self.source_type = attributes[:'source_type']
       end
 
       if attributes.has_key?(:'refresh_state_uuid')
@@ -132,6 +140,7 @@ module TopologicalInventoryIngressApiClient
           name == o.name &&
           schema == o.schema &&
           source == o.source &&
+          source_type == o.source_type &&
           refresh_state_uuid == o.refresh_state_uuid &&
           refresh_state_part_uuid == o.refresh_state_part_uuid &&
           total_parts == o.total_parts &&
@@ -148,7 +157,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, schema, source, refresh_state_uuid, refresh_state_part_uuid, total_parts, sweep_scope, collections].hash
+      [name, schema, source, source_type, refresh_state_uuid, refresh_state_part_uuid, total_parts, sweep_scope, collections].hash
     end
 
     # Builds the object from hash

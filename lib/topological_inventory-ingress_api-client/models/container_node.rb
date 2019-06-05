@@ -74,12 +74,12 @@ module TopologicalInventoryIngressApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'addresses' => :'Array',
+        :'addresses' => :'Array<Object>',
         :'allocatable_cpus' => :'Float',
         :'allocatable_memory' => :'Integer',
         :'allocatable_pods' => :'Integer',
         :'archived_at' => :'DateTime',
-        :'conditions' => :'Array',
+        :'conditions' => :'Array<Object>',
         :'cpus' => :'Integer',
         :'lives_on' => :'CrossLinkVmReference',
         :'memory' => :'Integer',
@@ -103,7 +103,9 @@ module TopologicalInventoryIngressApiClient
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
       if attributes.has_key?(:'addresses')
-        self.addresses = attributes[:'addresses']
+        if (value = attributes[:'addresses']).is_a?(Array)
+          self.addresses = value
+        end
       end
 
       if attributes.has_key?(:'allocatable_cpus')
@@ -123,7 +125,9 @@ module TopologicalInventoryIngressApiClient
       end
 
       if attributes.has_key?(:'conditions')
-        self.conditions = attributes[:'conditions']
+        if (value = attributes[:'conditions']).is_a?(Array)
+          self.conditions = value
+        end
       end
 
       if attributes.has_key?(:'cpus')
