@@ -58,7 +58,7 @@ module TopologicalInventoryIngressApiClient
         :'refresh_state_part_uuid' => :'String',
         :'total_parts' => :'Integer',
         :'sweep_scope' => :'Object',
-        :'collections' => :'Array<Object>'
+        :'collections' => :'Array<InventoryCollection>'
       }
     end
 
