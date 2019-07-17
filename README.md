@@ -130,6 +130,8 @@ Class | Method | HTTP request | Description
  - [TopologicalInventoryIngressApiClient::InventoryCollectionContainerTemplate](docs/InventoryCollectionContainerTemplate.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionContainerTemplateTag](docs/InventoryCollectionContainerTemplateTag.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionDatastore](docs/InventoryCollectionDatastore.md)
+ - [TopologicalInventoryIngressApiClient::InventoryCollectionDatastoreMount](docs/InventoryCollectionDatastoreMount.md)
+ - [TopologicalInventoryIngressApiClient::InventoryCollectionDatastoreTag](docs/InventoryCollectionDatastoreTag.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionFlavor](docs/InventoryCollectionFlavor.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionHost](docs/InventoryCollectionHost.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionHostTag](docs/InventoryCollectionHostTag.md)
