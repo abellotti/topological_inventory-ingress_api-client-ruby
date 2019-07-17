@@ -69,6 +69,7 @@ require 'topological_inventory-ingress_api-client/models/inventory_collection_co
 require 'topological_inventory-ingress_api-client/models/inventory_collection_container_resource_quota'
 require 'topological_inventory-ingress_api-client/models/inventory_collection_container_template'
 require 'topological_inventory-ingress_api-client/models/inventory_collection_container_template_tag'
+require 'topological_inventory-ingress_api-client/models/inventory_collection_datastore'
 require 'topological_inventory-ingress_api-client/models/inventory_collection_flavor'
 require 'topological_inventory-ingress_api-client/models/inventory_collection_host'
 require 'topological_inventory-ingress_api-client/models/inventory_collection_host_tag'

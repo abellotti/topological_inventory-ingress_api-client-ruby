@@ -129,6 +129,7 @@ Class | Method | HTTP request | Description
  - [TopologicalInventoryIngressApiClient::InventoryCollectionContainerResourceQuota](docs/InventoryCollectionContainerResourceQuota.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionContainerTemplate](docs/InventoryCollectionContainerTemplate.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionContainerTemplateTag](docs/InventoryCollectionContainerTemplateTag.md)
+ - [TopologicalInventoryIngressApiClient::InventoryCollectionDatastore](docs/InventoryCollectionDatastore.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionFlavor](docs/InventoryCollectionFlavor.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionHost](docs/InventoryCollectionHost.md)
  - [TopologicalInventoryIngressApiClient::InventoryCollectionHostTag](docs/InventoryCollectionHostTag.md)
