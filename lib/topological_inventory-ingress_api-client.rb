@@ -43,6 +43,7 @@ require 'topological_inventory-ingress_api-client/models/container_template_refe
 require 'topological_inventory-ingress_api-client/models/container_template_tag'
 require 'topological_inventory-ingress_api-client/models/cross_link_vm_reference'
 require 'topological_inventory-ingress_api-client/models/cross_link_vm_reference_reference'
+require 'topological_inventory-ingress_api-client/models/datastore'
 require 'topological_inventory-ingress_api-client/models/flavor'
 require 'topological_inventory-ingress_api-client/models/flavor_reference'
 require 'topological_inventory-ingress_api-client/models/flavor_reference_reference'

@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
  - [TopologicalInventoryIngressApiClient::ContainerTemplateTag](docs/ContainerTemplateTag.md)
  - [TopologicalInventoryIngressApiClient::CrossLinkVmReference](docs/CrossLinkVmReference.md)
  - [TopologicalInventoryIngressApiClient::CrossLinkVmReferenceReference](docs/CrossLinkVmReferenceReference.md)
+ - [TopologicalInventoryIngressApiClient::Datastore](docs/Datastore.md)
  - [TopologicalInventoryIngressApiClient::Flavor](docs/Flavor.md)
  - [TopologicalInventoryIngressApiClient::FlavorReference](docs/FlavorReference.md)
  - [TopologicalInventoryIngressApiClient::FlavorReferenceReference](docs/FlavorReferenceReference.md)
