@@ -104,6 +104,8 @@ Class | Method | HTTP request | Description
  - [TopologicalInventoryIngressApiClient::CrossLinkVmReference](docs/CrossLinkVmReference.md)
  - [TopologicalInventoryIngressApiClient::CrossLinkVmReferenceReference](docs/CrossLinkVmReferenceReference.md)
  - [TopologicalInventoryIngressApiClient::Datastore](docs/Datastore.md)
+ - [TopologicalInventoryIngressApiClient::DatastoreMount](docs/DatastoreMount.md)
+ - [TopologicalInventoryIngressApiClient::DatastoreReference](docs/DatastoreReference.md)
  - [TopologicalInventoryIngressApiClient::Flavor](docs/Flavor.md)
  - [TopologicalInventoryIngressApiClient::FlavorReference](docs/FlavorReference.md)
  - [TopologicalInventoryIngressApiClient::FlavorReferenceReference](docs/FlavorReferenceReference.md)
