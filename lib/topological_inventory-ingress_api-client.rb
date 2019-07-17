@@ -46,6 +46,7 @@ require 'topological_inventory-ingress_api-client/models/cross_link_vm_reference
 require 'topological_inventory-ingress_api-client/models/datastore'
 require 'topological_inventory-ingress_api-client/models/datastore_mount'
 require 'topological_inventory-ingress_api-client/models/datastore_reference'
+require 'topological_inventory-ingress_api-client/models/datastore_tag'
 require 'topological_inventory-ingress_api-client/models/flavor'
 require 'topological_inventory-ingress_api-client/models/flavor_reference'
 require 'topological_inventory-ingress_api-client/models/flavor_reference_reference'

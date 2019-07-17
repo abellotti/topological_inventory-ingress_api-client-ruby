@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
  - [TopologicalInventoryIngressApiClient::Datastore](docs/Datastore.md)
  - [TopologicalInventoryIngressApiClient::DatastoreMount](docs/DatastoreMount.md)
  - [TopologicalInventoryIngressApiClient::DatastoreReference](docs/DatastoreReference.md)
+ - [TopologicalInventoryIngressApiClient::DatastoreTag](docs/DatastoreTag.md)
  - [TopologicalInventoryIngressApiClient::Flavor](docs/Flavor.md)
  - [TopologicalInventoryIngressApiClient::FlavorReference](docs/FlavorReference.md)
  - [TopologicalInventoryIngressApiClient::FlavorReferenceReference](docs/FlavorReferenceReference.md)
