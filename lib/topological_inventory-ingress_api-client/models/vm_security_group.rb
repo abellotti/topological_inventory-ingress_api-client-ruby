@@ -13,24 +13,24 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class DatastoreTag
-    attr_accessor :datastore
+  class VmSecurityGroup
+    attr_accessor :security_group
 
-    attr_accessor :tag
+    attr_accessor :vm
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'datastore' => :'datastore',
-        :'tag' => :'tag'
+        :'security_group' => :'security_group',
+        :'vm' => :'vm'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'datastore' => :'DatastoreReference',
-        :'tag' => :'TagReference'
+        :'security_group' => :'SecurityGroupReference',
+        :'vm' => :'VmReference'
       }
     end
 
@@ -42,12 +42,12 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'datastore')
-        self.datastore = attributes[:'datastore']
+      if attributes.has_key?(:'security_group')
+        self.security_group = attributes[:'security_group']
       end
 
-      if attributes.has_key?(:'tag')
-        self.tag = attributes[:'tag']
+      if attributes.has_key?(:'vm')
+        self.vm = attributes[:'vm']
       end
     end
 
@@ -55,12 +55,12 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @datastore.nil?
-        invalid_properties.push('invalid value for "datastore", datastore cannot be nil.')
+      if @security_group.nil?
+        invalid_properties.push('invalid value for "security_group", security_group cannot be nil.')
       end
 
-      if @tag.nil?
-        invalid_properties.push('invalid value for "tag", tag cannot be nil.')
+      if @vm.nil?
+        invalid_properties.push('invalid value for "vm", vm cannot be nil.')
       end
 
       invalid_properties
@@ -69,8 +69,8 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @datastore.nil?
-      return false if @tag.nil?
+      return false if @security_group.nil?
+      return false if @vm.nil?
       true
     end
 
@@ -79,8 +79,8 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          datastore == o.datastore &&
-          tag == o.tag
+          security_group == o.security_group &&
+          vm == o.vm
     end
 
     # @see the `==` method
@@ -92,7 +92,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [datastore, tag].hash
+      [security_group, vm].hash
     end
 
     # Builds the object from hash

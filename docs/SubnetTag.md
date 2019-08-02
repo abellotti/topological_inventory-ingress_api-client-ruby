@@ -1,9 +1,9 @@
-# TopologicalInventoryIngressApiClient::DatastoreTag
+# TopologicalInventoryIngressApiClient::SubnetTag
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**datastore** | [**DatastoreReference**](DatastoreReference.md) |  | 
+**subnet** | [**SubnetReference**](SubnetReference.md) |  | 
 **tag** | [**TagReference**](TagReference.md) |  | 
 
 

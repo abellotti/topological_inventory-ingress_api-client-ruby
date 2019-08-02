@@ -1,9 +1,9 @@
-# TopologicalInventoryIngressApiClient::DatastoreTag
+# TopologicalInventoryIngressApiClient::IpaddressTag
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**datastore** | [**DatastoreReference**](DatastoreReference.md) |  | 
+**ipaddress** | [**IpaddressReference**](IpaddressReference.md) |  | 
 **tag** | [**TagReference**](TagReference.md) |  | 
 
 

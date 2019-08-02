@@ -1,9 +1,9 @@
-# TopologicalInventoryIngressApiClient::DatastoreTag
+# TopologicalInventoryIngressApiClient::SecurityGroupTag
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**datastore** | [**DatastoreReference**](DatastoreReference.md) |  | 
+**security_group** | [**SecurityGroupReference**](SecurityGroupReference.md) |  | 
 **tag** | [**TagReference**](TagReference.md) |  | 
 
 

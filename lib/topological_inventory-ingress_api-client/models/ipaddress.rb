@@ -13,68 +13,90 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class Datastore
-    # Is the datastore accessible or not?
-    attr_accessor :accessible
-
+  class Ipaddress
     attr_accessor :archived_at
 
-    # Free form document for storing SourceType's specific attributes.
     attr_accessor :extra
 
-    # How much space (bytes) is still available to be allocated
-    attr_accessor :free_space
+    attr_accessor :ipaddress
 
-    # The physical location of the storage
-    attr_accessor :location
+    attr_accessor :kind
 
-    # Friendly name for this storage
-    attr_accessor :name
+    attr_accessor :network_adapter
+
+    attr_accessor :orchestration_stack
+
+    attr_accessor :resource_timestamp
 
     attr_accessor :source_created_at
 
     attr_accessor :source_deleted_at
 
-    # Unique reference for this storage
     attr_accessor :source_ref
 
-    # High level status of the storage
-    attr_accessor :status
+    attr_accessor :source_region
 
-    # How much total space (bytes) does the storage have
-    attr_accessor :total_space
+    attr_accessor :subnet
+
+    attr_accessor :subscription
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accessible' => :'accessible',
         :'archived_at' => :'archived_at',
         :'extra' => :'extra',
-        :'free_space' => :'free_space',
-        :'location' => :'location',
-        :'name' => :'name',
+        :'ipaddress' => :'ipaddress',
+        :'kind' => :'kind',
+        :'network_adapter' => :'network_adapter',
+        :'orchestration_stack' => :'orchestration_stack',
+        :'resource_timestamp' => :'resource_timestamp',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
         :'source_ref' => :'source_ref',
-        :'status' => :'status',
-        :'total_space' => :'total_space'
+        :'source_region' => :'source_region',
+        :'subnet' => :'subnet',
+        :'subscription' => :'subscription'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'accessible' => :'BOOLEAN',
         :'archived_at' => :'DateTime',
         :'extra' => :'Object',
-        :'free_space' => :'Integer',
-        :'location' => :'String',
-        :'name' => :'String',
+        :'ipaddress' => :'String',
+        :'kind' => :'String',
+        :'network_adapter' => :'NetworkAdapterReference',
+        :'orchestration_stack' => :'OrchestrationStackReference',
+        :'resource_timestamp' => :'DateTime',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
         :'source_ref' => :'String',
-        :'status' => :'String',
-        :'total_space' => :'Integer'
+        :'source_region' => :'SourceRegionReference',
+        :'subnet' => :'SubnetReference',
+        :'subscription' => :'SubscriptionReference'
       }
     end
 
@@ -86,10 +108,6 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'accessible')
-        self.accessible = attributes[:'accessible']
-      end
-
       if attributes.has_key?(:'archived_at')
         self.archived_at = attributes[:'archived_at']
       end
@@ -98,16 +116,24 @@ module TopologicalInventoryIngressApiClient
         self.extra = attributes[:'extra']
       end
 
-      if attributes.has_key?(:'free_space')
-        self.free_space = attributes[:'free_space']
+      if attributes.has_key?(:'ipaddress')
+        self.ipaddress = attributes[:'ipaddress']
       end
 
-      if attributes.has_key?(:'location')
-        self.location = attributes[:'location']
+      if attributes.has_key?(:'kind')
+        self.kind = attributes[:'kind']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'network_adapter')
+        self.network_adapter = attributes[:'network_adapter']
+      end
+
+      if attributes.has_key?(:'orchestration_stack')
+        self.orchestration_stack = attributes[:'orchestration_stack']
+      end
+
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
       end
 
       if attributes.has_key?(:'source_created_at')
@@ -122,12 +148,16 @@ module TopologicalInventoryIngressApiClient
         self.source_ref = attributes[:'source_ref']
       end
 
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.has_key?(:'source_region')
+        self.source_region = attributes[:'source_region']
       end
 
-      if attributes.has_key?(:'total_space')
-        self.total_space = attributes[:'total_space']
+      if attributes.has_key?(:'subnet')
+        self.subnet = attributes[:'subnet']
+      end
+
+      if attributes.has_key?(:'subscription')
+        self.subscription = attributes[:'subscription']
       end
     end
 
@@ -135,6 +165,10 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @kind.nil?
+        invalid_properties.push('invalid value for "kind", kind cannot be nil.')
+      end
+
       if @source_ref.nil?
         invalid_properties.push('invalid value for "source_ref", source_ref cannot be nil.')
       end
@@ -145,8 +179,21 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @kind.nil?
+      kind_validator = EnumAttributeValidator.new('String', ['private', 'public', 'elastic'])
+      return false unless kind_validator.valid?(@kind)
       return false if @source_ref.nil?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] kind Object to be assigned
+    def kind=(kind)
+      validator = EnumAttributeValidator.new('String', ['private', 'public', 'elastic'])
+      unless validator.valid?(kind)
+        fail ArgumentError, 'invalid value for "kind", must be one of #{validator.allowable_values}.'
+      end
+      @kind = kind
     end
 
     # Checks equality by comparing each attribute.
@@ -154,17 +201,19 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accessible == o.accessible &&
           archived_at == o.archived_at &&
           extra == o.extra &&
-          free_space == o.free_space &&
-          location == o.location &&
-          name == o.name &&
+          ipaddress == o.ipaddress &&
+          kind == o.kind &&
+          network_adapter == o.network_adapter &&
+          orchestration_stack == o.orchestration_stack &&
+          resource_timestamp == o.resource_timestamp &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
           source_ref == o.source_ref &&
-          status == o.status &&
-          total_space == o.total_space
+          source_region == o.source_region &&
+          subnet == o.subnet &&
+          subscription == o.subscription
     end
 
     # @see the `==` method
@@ -176,7 +225,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accessible, archived_at, extra, free_space, location, name, source_created_at, source_deleted_at, source_ref, status, total_space].hash
+      [archived_at, extra, ipaddress, kind, network_adapter, orchestration_stack, resource_timestamp, source_created_at, source_deleted_at, source_ref, source_region, subnet, subscription].hash
     end
 
     # Builds the object from hash
