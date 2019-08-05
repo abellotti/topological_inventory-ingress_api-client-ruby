@@ -13,24 +13,28 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class DatastoreTag
-    attr_accessor :datastore
+  class InventoryCollectionSubnet
+    attr_accessor :name
 
-    attr_accessor :tag
+    attr_accessor :data
+
+    attr_accessor :partial_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'datastore' => :'datastore',
-        :'tag' => :'tag'
+        :'name' => :'name',
+        :'data' => :'data',
+        :'partial_data' => :'partial_data'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'datastore' => :'DatastoreReference',
-        :'tag' => :'TagReference'
+        :'name' => :'String',
+        :'data' => :'Array<Subnet>',
+        :'partial_data' => :'Array<Subnet>'
       }
     end
 
@@ -42,12 +46,20 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'datastore')
-        self.datastore = attributes[:'datastore']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'tag')
-        self.tag = attributes[:'tag']
+      if attributes.has_key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
+      end
+
+      if attributes.has_key?(:'partial_data')
+        if (value = attributes[:'partial_data']).is_a?(Array)
+          self.partial_data = value
+        end
       end
     end
 
@@ -55,12 +67,8 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @datastore.nil?
-        invalid_properties.push('invalid value for "datastore", datastore cannot be nil.')
-      end
-
-      if @tag.nil?
-        invalid_properties.push('invalid value for "tag", tag cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -69,8 +77,7 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @datastore.nil?
-      return false if @tag.nil?
+      return false if @name.nil?
       true
     end
 
@@ -79,8 +86,9 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          datastore == o.datastore &&
-          tag == o.tag
+          name == o.name &&
+          data == o.data &&
+          partial_data == o.partial_data
     end
 
     # @see the `==` method
@@ -92,7 +100,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [datastore, tag].hash
+      [name, data, partial_data].hash
     end
 
     # Builds the object from hash

@@ -13,24 +13,52 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class DatastoreTag
-    attr_accessor :datastore
+  class NetworkAdapter
+    attr_accessor :archived_at
 
-    attr_accessor :tag
+    attr_accessor :device
+
+    attr_accessor :extra
+
+    attr_accessor :mac_address
+
+    attr_accessor :orchestration_stack
+
+    attr_accessor :resource_timestamp
+
+    attr_accessor :source_created_at
+
+    attr_accessor :source_deleted_at
+
+    attr_accessor :source_ref
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'datastore' => :'datastore',
-        :'tag' => :'tag'
+        :'archived_at' => :'archived_at',
+        :'device' => :'device',
+        :'extra' => :'extra',
+        :'mac_address' => :'mac_address',
+        :'orchestration_stack' => :'orchestration_stack',
+        :'resource_timestamp' => :'resource_timestamp',
+        :'source_created_at' => :'source_created_at',
+        :'source_deleted_at' => :'source_deleted_at',
+        :'source_ref' => :'source_ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'datastore' => :'DatastoreReference',
-        :'tag' => :'TagReference'
+        :'archived_at' => :'DateTime',
+        :'device' => :'Object',
+        :'extra' => :'Object',
+        :'mac_address' => :'String',
+        :'orchestration_stack' => :'OrchestrationStackReference',
+        :'resource_timestamp' => :'DateTime',
+        :'source_created_at' => :'DateTime',
+        :'source_deleted_at' => :'DateTime',
+        :'source_ref' => :'String'
       }
     end
 
@@ -42,12 +70,40 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'datastore')
-        self.datastore = attributes[:'datastore']
+      if attributes.has_key?(:'archived_at')
+        self.archived_at = attributes[:'archived_at']
       end
 
-      if attributes.has_key?(:'tag')
-        self.tag = attributes[:'tag']
+      if attributes.has_key?(:'device')
+        self.device = attributes[:'device']
+      end
+
+      if attributes.has_key?(:'extra')
+        self.extra = attributes[:'extra']
+      end
+
+      if attributes.has_key?(:'mac_address')
+        self.mac_address = attributes[:'mac_address']
+      end
+
+      if attributes.has_key?(:'orchestration_stack')
+        self.orchestration_stack = attributes[:'orchestration_stack']
+      end
+
+      if attributes.has_key?(:'resource_timestamp')
+        self.resource_timestamp = attributes[:'resource_timestamp']
+      end
+
+      if attributes.has_key?(:'source_created_at')
+        self.source_created_at = attributes[:'source_created_at']
+      end
+
+      if attributes.has_key?(:'source_deleted_at')
+        self.source_deleted_at = attributes[:'source_deleted_at']
+      end
+
+      if attributes.has_key?(:'source_ref')
+        self.source_ref = attributes[:'source_ref']
       end
     end
 
@@ -55,12 +111,8 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @datastore.nil?
-        invalid_properties.push('invalid value for "datastore", datastore cannot be nil.')
-      end
-
-      if @tag.nil?
-        invalid_properties.push('invalid value for "tag", tag cannot be nil.')
+      if @source_ref.nil?
+        invalid_properties.push('invalid value for "source_ref", source_ref cannot be nil.')
       end
 
       invalid_properties
@@ -69,8 +121,7 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @datastore.nil?
-      return false if @tag.nil?
+      return false if @source_ref.nil?
       true
     end
 
@@ -79,8 +130,15 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          datastore == o.datastore &&
-          tag == o.tag
+          archived_at == o.archived_at &&
+          device == o.device &&
+          extra == o.extra &&
+          mac_address == o.mac_address &&
+          orchestration_stack == o.orchestration_stack &&
+          resource_timestamp == o.resource_timestamp &&
+          source_created_at == o.source_created_at &&
+          source_deleted_at == o.source_deleted_at &&
+          source_ref == o.source_ref
     end
 
     # @see the `==` method
@@ -92,7 +150,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [datastore, tag].hash
+      [archived_at, device, extra, mac_address, orchestration_stack, resource_timestamp, source_created_at, source_deleted_at, source_ref].hash
     end
 
     # Builds the object from hash

@@ -33,7 +33,7 @@ module TopologicalInventoryIngressApiClient
     def self.openapi_types
       {
         :'inventory_collection_name' => :'String',
-        :'reference' => :'ClusterReferenceReference',
+        :'reference' => :'DatastoreReferenceReference',
         :'ref' => :'String'
       }
     end

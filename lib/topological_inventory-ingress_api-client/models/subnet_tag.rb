@@ -13,15 +13,15 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class DatastoreTag
-    attr_accessor :datastore
+  class SubnetTag
+    attr_accessor :subnet
 
     attr_accessor :tag
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'datastore' => :'datastore',
+        :'subnet' => :'subnet',
         :'tag' => :'tag'
       }
     end
@@ -29,7 +29,7 @@ module TopologicalInventoryIngressApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'datastore' => :'DatastoreReference',
+        :'subnet' => :'SubnetReference',
         :'tag' => :'TagReference'
       }
     end
@@ -42,8 +42,8 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'datastore')
-        self.datastore = attributes[:'datastore']
+      if attributes.has_key?(:'subnet')
+        self.subnet = attributes[:'subnet']
       end
 
       if attributes.has_key?(:'tag')
@@ -55,8 +55,8 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @datastore.nil?
-        invalid_properties.push('invalid value for "datastore", datastore cannot be nil.')
+      if @subnet.nil?
+        invalid_properties.push('invalid value for "subnet", subnet cannot be nil.')
       end
 
       if @tag.nil?
@@ -69,7 +69,7 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @datastore.nil?
+      return false if @subnet.nil?
       return false if @tag.nil?
       true
     end
@@ -79,7 +79,7 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          datastore == o.datastore &&
+          subnet == o.subnet &&
           tag == o.tag
     end
 
@@ -92,7 +92,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [datastore, tag].hash
+      [subnet, tag].hash
     end
 
     # Builds the object from hash

@@ -13,24 +13,28 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class DatastoreTag
-    attr_accessor :datastore
+  class IpaddressReference
+    attr_accessor :inventory_collection_name
 
-    attr_accessor :tag
+    attr_accessor :reference
+
+    attr_accessor :ref
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'datastore' => :'datastore',
-        :'tag' => :'tag'
+        :'inventory_collection_name' => :'inventory_collection_name',
+        :'reference' => :'reference',
+        :'ref' => :'ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'datastore' => :'DatastoreReference',
-        :'tag' => :'TagReference'
+        :'inventory_collection_name' => :'String',
+        :'reference' => :'ClusterReferenceReference',
+        :'ref' => :'String'
       }
     end
 
@@ -42,12 +46,16 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'datastore')
-        self.datastore = attributes[:'datastore']
+      if attributes.has_key?(:'inventory_collection_name')
+        self.inventory_collection_name = attributes[:'inventory_collection_name']
       end
 
-      if attributes.has_key?(:'tag')
-        self.tag = attributes[:'tag']
+      if attributes.has_key?(:'reference')
+        self.reference = attributes[:'reference']
+      end
+
+      if attributes.has_key?(:'ref')
+        self.ref = attributes[:'ref']
       end
     end
 
@@ -55,12 +63,24 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @datastore.nil?
-        invalid_properties.push('invalid value for "datastore", datastore cannot be nil.')
+      if @inventory_collection_name.nil?
+        invalid_properties.push('invalid value for "inventory_collection_name", inventory_collection_name cannot be nil.')
       end
 
-      if @tag.nil?
-        invalid_properties.push('invalid value for "tag", tag cannot be nil.')
+      if @inventory_collection_name !~ Regexp.new(/^ipaddresses$/)
+        invalid_properties.push('invalid value for "inventory_collection_name", must conform to the pattern /^ipaddresses$/.')
+      end
+
+      if @reference.nil?
+        invalid_properties.push('invalid value for "reference", reference cannot be nil.')
+      end
+
+      if @ref.nil?
+        invalid_properties.push('invalid value for "ref", ref cannot be nil.')
+      end
+
+      if @ref !~ Regexp.new(/^manager_ref$/)
+        invalid_properties.push('invalid value for "ref", must conform to the pattern /^manager_ref$/.')
       end
 
       invalid_properties
@@ -69,9 +89,40 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @datastore.nil?
-      return false if @tag.nil?
+      return false if @inventory_collection_name.nil?
+      return false if @inventory_collection_name !~ Regexp.new(/^ipaddresses$/)
+      return false if @reference.nil?
+      return false if @ref.nil?
+      return false if @ref !~ Regexp.new(/^manager_ref$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] inventory_collection_name Value to be assigned
+    def inventory_collection_name=(inventory_collection_name)
+      if inventory_collection_name.nil?
+        fail ArgumentError, 'inventory_collection_name cannot be nil'
+      end
+
+      if inventory_collection_name !~ Regexp.new(/^ipaddresses$/)
+        fail ArgumentError, 'invalid value for "inventory_collection_name", must conform to the pattern /^ipaddresses$/.'
+      end
+
+      @inventory_collection_name = inventory_collection_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] ref Value to be assigned
+    def ref=(ref)
+      if ref.nil?
+        fail ArgumentError, 'ref cannot be nil'
+      end
+
+      if ref !~ Regexp.new(/^manager_ref$/)
+        fail ArgumentError, 'invalid value for "ref", must conform to the pattern /^manager_ref$/.'
+      end
+
+      @ref = ref
     end
 
     # Checks equality by comparing each attribute.
@@ -79,8 +130,9 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          datastore == o.datastore &&
-          tag == o.tag
+          inventory_collection_name == o.inventory_collection_name &&
+          reference == o.reference &&
+          ref == o.ref
     end
 
     # @see the `==` method
@@ -92,7 +144,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [datastore, tag].hash
+      [inventory_collection_name, reference, ref].hash
     end
 
     # Builds the object from hash
