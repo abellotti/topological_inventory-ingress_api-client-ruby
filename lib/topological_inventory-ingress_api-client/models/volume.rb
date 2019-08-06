@@ -20,6 +20,8 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :name
 
+    attr_accessor :orchestration_stack
+
     attr_accessor :resource_timestamp
 
     attr_accessor :size
@@ -34,6 +36,8 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :state
 
+    attr_accessor :subscription
+
     attr_accessor :volume_type
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -42,6 +46,7 @@ module TopologicalInventoryIngressApiClient
         :'archived_at' => :'archived_at',
         :'extra' => :'extra',
         :'name' => :'name',
+        :'orchestration_stack' => :'orchestration_stack',
         :'resource_timestamp' => :'resource_timestamp',
         :'size' => :'size',
         :'source_created_at' => :'source_created_at',
@@ -49,6 +54,7 @@ module TopologicalInventoryIngressApiClient
         :'source_ref' => :'source_ref',
         :'source_region' => :'source_region',
         :'state' => :'state',
+        :'subscription' => :'subscription',
         :'volume_type' => :'volume_type'
       }
     end
@@ -59,6 +65,7 @@ module TopologicalInventoryIngressApiClient
         :'archived_at' => :'DateTime',
         :'extra' => :'Object',
         :'name' => :'String',
+        :'orchestration_stack' => :'OrchestrationStackReference',
         :'resource_timestamp' => :'DateTime',
         :'size' => :'Integer',
         :'source_created_at' => :'DateTime',
@@ -66,6 +73,7 @@ module TopologicalInventoryIngressApiClient
         :'source_ref' => :'String',
         :'source_region' => :'SourceRegionReference',
         :'state' => :'String',
+        :'subscription' => :'SubscriptionReference',
         :'volume_type' => :'VolumeTypeReference'
       }
     end
@@ -88,6 +96,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'orchestration_stack')
+        self.orchestration_stack = attributes[:'orchestration_stack']
       end
 
       if attributes.has_key?(:'resource_timestamp')
@@ -116,6 +128,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'state')
         self.state = attributes[:'state']
+      end
+
+      if attributes.has_key?(:'subscription')
+        self.subscription = attributes[:'subscription']
       end
 
       if attributes.has_key?(:'volume_type')
@@ -149,6 +165,7 @@ module TopologicalInventoryIngressApiClient
           archived_at == o.archived_at &&
           extra == o.extra &&
           name == o.name &&
+          orchestration_stack == o.orchestration_stack &&
           resource_timestamp == o.resource_timestamp &&
           size == o.size &&
           source_created_at == o.source_created_at &&
@@ -156,6 +173,7 @@ module TopologicalInventoryIngressApiClient
           source_ref == o.source_ref &&
           source_region == o.source_region &&
           state == o.state &&
+          subscription == o.subscription &&
           volume_type == o.volume_type
     end
 
@@ -168,7 +186,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [archived_at, extra, name, resource_timestamp, size, source_created_at, source_deleted_at, source_ref, source_region, state, volume_type].hash
+      [archived_at, extra, name, orchestration_stack, resource_timestamp, size, source_created_at, source_deleted_at, source_ref, source_region, state, subscription, volume_type].hash
     end
 
     # Builds the object from hash

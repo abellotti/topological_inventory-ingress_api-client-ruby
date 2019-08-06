@@ -25,3 +25,6 @@
 .gitignore
 
 topological_inventory-ingress_api-client.gemspec
+
+# Generating this model is broken, keeps generating :'collections' => :'Array<Object>' instead of the specific classes
+lib/topological_inventory-ingress_api-client/models/inventory.rb
