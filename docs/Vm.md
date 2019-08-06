@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
 **source_ref** | **String** |  | 
+**source_region** | [**SourceRegionReference**](SourceRegionReference.md) |  | [optional] 
+**subscription** | [**SubscriptionReference**](SubscriptionReference.md) |  | [optional] 
 **uid_ems** | **String** |  | [optional] 
 
 

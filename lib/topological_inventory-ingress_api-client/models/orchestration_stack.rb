@@ -20,6 +20,8 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :name
 
+    attr_accessor :parent_orchestration_stack
+
     attr_accessor :resource_timestamp
 
     attr_accessor :source_created_at
@@ -28,16 +30,23 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :source_ref
 
+    attr_accessor :source_region
+
+    attr_accessor :subscription
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'archived_at' => :'archived_at',
         :'description' => :'description',
         :'name' => :'name',
+        :'parent_orchestration_stack' => :'parent_orchestration_stack',
         :'resource_timestamp' => :'resource_timestamp',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'source_ref' => :'source_ref'
+        :'source_ref' => :'source_ref',
+        :'source_region' => :'source_region',
+        :'subscription' => :'subscription'
       }
     end
 
@@ -47,10 +56,13 @@ module TopologicalInventoryIngressApiClient
         :'archived_at' => :'DateTime',
         :'description' => :'String',
         :'name' => :'String',
+        :'parent_orchestration_stack' => :'OrchestrationStackReference',
         :'resource_timestamp' => :'DateTime',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'source_ref' => :'String'
+        :'source_ref' => :'String',
+        :'source_region' => :'SourceRegionReference',
+        :'subscription' => :'SubscriptionReference'
       }
     end
 
@@ -74,6 +86,10 @@ module TopologicalInventoryIngressApiClient
         self.name = attributes[:'name']
       end
 
+      if attributes.has_key?(:'parent_orchestration_stack')
+        self.parent_orchestration_stack = attributes[:'parent_orchestration_stack']
+      end
+
       if attributes.has_key?(:'resource_timestamp')
         self.resource_timestamp = attributes[:'resource_timestamp']
       end
@@ -88,6 +104,14 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'source_ref')
         self.source_ref = attributes[:'source_ref']
+      end
+
+      if attributes.has_key?(:'source_region')
+        self.source_region = attributes[:'source_region']
+      end
+
+      if attributes.has_key?(:'subscription')
+        self.subscription = attributes[:'subscription']
       end
     end
 
@@ -117,10 +141,13 @@ module TopologicalInventoryIngressApiClient
           archived_at == o.archived_at &&
           description == o.description &&
           name == o.name &&
+          parent_orchestration_stack == o.parent_orchestration_stack &&
           resource_timestamp == o.resource_timestamp &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          source_ref == o.source_ref
+          source_ref == o.source_ref &&
+          source_region == o.source_region &&
+          subscription == o.subscription
     end
 
     # @see the `==` method
@@ -132,7 +159,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [archived_at, description, name, resource_timestamp, source_created_at, source_deleted_at, source_ref].hash
+      [archived_at, description, name, parent_orchestration_stack, resource_timestamp, source_created_at, source_deleted_at, source_ref, source_region, subscription].hash
     end
 
     # Builds the object from hash
