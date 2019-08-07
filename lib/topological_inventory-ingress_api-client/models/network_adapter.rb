@@ -32,6 +32,10 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :source_ref
 
+    attr_accessor :source_region
+
+    attr_accessor :subscription
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -43,7 +47,9 @@ module TopologicalInventoryIngressApiClient
         :'resource_timestamp' => :'resource_timestamp',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
-        :'source_ref' => :'source_ref'
+        :'source_ref' => :'source_ref',
+        :'source_region' => :'source_region',
+        :'subscription' => :'subscription'
       }
     end
 
@@ -58,7 +64,9 @@ module TopologicalInventoryIngressApiClient
         :'resource_timestamp' => :'DateTime',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
-        :'source_ref' => :'String'
+        :'source_ref' => :'String',
+        :'source_region' => :'SourceRegionReference',
+        :'subscription' => :'SubscriptionReference'
       }
     end
 
@@ -105,6 +113,14 @@ module TopologicalInventoryIngressApiClient
       if attributes.has_key?(:'source_ref')
         self.source_ref = attributes[:'source_ref']
       end
+
+      if attributes.has_key?(:'source_region')
+        self.source_region = attributes[:'source_region']
+      end
+
+      if attributes.has_key?(:'subscription')
+        self.subscription = attributes[:'subscription']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -138,7 +154,9 @@ module TopologicalInventoryIngressApiClient
           resource_timestamp == o.resource_timestamp &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
-          source_ref == o.source_ref
+          source_ref == o.source_ref &&
+          source_region == o.source_region &&
+          subscription == o.subscription
     end
 
     # @see the `==` method
@@ -150,7 +168,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [archived_at, device, extra, mac_address, orchestration_stack, resource_timestamp, source_created_at, source_deleted_at, source_ref].hash
+      [archived_at, device, extra, mac_address, orchestration_stack, resource_timestamp, source_created_at, source_deleted_at, source_ref, source_region, subscription].hash
     end
 
     # Builds the object from hash
