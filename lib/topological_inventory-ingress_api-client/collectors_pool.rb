@@ -66,6 +66,9 @@ module TopologicalInventoryIngressApiClient
         next unless collectors[source.source].nil?
         next if (source_secret = secrets_for_source(source)).nil?
 
+        # Check if necessary endpoint/auth data are not blank (provider specific)
+        next unless source_valid?(source, source_secret)
+
         collector = new_collector(source, source_secret)
         collectors[source.source] = collector
         thread = Thread.new { collector.collect! }
@@ -93,6 +96,10 @@ module TopologicalInventoryIngressApiClient
       logger.info("Updated at: Config load: #{updated_at[:config].to_s}, Secret load: #{updated_at[:secret]}")
 
       updated_at[:config] <= updated_at[:secret]
+    end
+
+    def source_valid?(source, secret)
+      true
     end
 
     def path_to_config
