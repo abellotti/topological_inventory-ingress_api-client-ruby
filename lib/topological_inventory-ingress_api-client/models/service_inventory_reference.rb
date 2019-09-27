@@ -13,48 +13,28 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class ServiceInventory
-    attr_accessor :archived_at
+  class ServiceInventoryReference
+    attr_accessor :inventory_collection_name
 
-    attr_accessor :description
+    attr_accessor :reference
 
-    attr_accessor :extra
-
-    attr_accessor :name
-
-    attr_accessor :resource_timestamp
-
-    attr_accessor :source_created_at
-
-    attr_accessor :source_ref
-
-    attr_accessor :source_updated_at
+    attr_accessor :ref
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'archived_at' => :'archived_at',
-        :'description' => :'description',
-        :'extra' => :'extra',
-        :'name' => :'name',
-        :'resource_timestamp' => :'resource_timestamp',
-        :'source_created_at' => :'source_created_at',
-        :'source_ref' => :'source_ref',
-        :'source_updated_at' => :'source_updated_at'
+        :'inventory_collection_name' => :'inventory_collection_name',
+        :'reference' => :'reference',
+        :'ref' => :'ref'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'archived_at' => :'DateTime',
-        :'description' => :'String',
-        :'extra' => :'Object',
-        :'name' => :'String',
-        :'resource_timestamp' => :'DateTime',
-        :'source_created_at' => :'DateTime',
-        :'source_ref' => :'String',
-        :'source_updated_at' => :'DateTime'
+        :'inventory_collection_name' => :'String',
+        :'reference' => :'ClusterReferenceReference',
+        :'ref' => :'String'
       }
     end
 
@@ -66,36 +46,16 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'archived_at')
-        self.archived_at = attributes[:'archived_at']
+      if attributes.has_key?(:'inventory_collection_name')
+        self.inventory_collection_name = attributes[:'inventory_collection_name']
       end
 
-      if attributes.has_key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.has_key?(:'reference')
+        self.reference = attributes[:'reference']
       end
 
-      if attributes.has_key?(:'extra')
-        self.extra = attributes[:'extra']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
-      end
-
-      if attributes.has_key?(:'source_created_at')
-        self.source_created_at = attributes[:'source_created_at']
-      end
-
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'source_updated_at')
-        self.source_updated_at = attributes[:'source_updated_at']
+      if attributes.has_key?(:'ref')
+        self.ref = attributes[:'ref']
       end
     end
 
@@ -103,8 +63,24 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @source_ref.nil?
-        invalid_properties.push('invalid value for "source_ref", source_ref cannot be nil.')
+      if @inventory_collection_name.nil?
+        invalid_properties.push('invalid value for "inventory_collection_name", inventory_collection_name cannot be nil.')
+      end
+
+      if @inventory_collection_name !~ Regexp.new(/^service_inventories$/)
+        invalid_properties.push('invalid value for "inventory_collection_name", must conform to the pattern /^service_inventories$/.')
+      end
+
+      if @reference.nil?
+        invalid_properties.push('invalid value for "reference", reference cannot be nil.')
+      end
+
+      if @ref.nil?
+        invalid_properties.push('invalid value for "ref", ref cannot be nil.')
+      end
+
+      if @ref !~ Regexp.new(/^manager_ref$/)
+        invalid_properties.push('invalid value for "ref", must conform to the pattern /^manager_ref$/.')
       end
 
       invalid_properties
@@ -113,8 +89,40 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @source_ref.nil?
+      return false if @inventory_collection_name.nil?
+      return false if @inventory_collection_name !~ Regexp.new(/^service_inventories$/)
+      return false if @reference.nil?
+      return false if @ref.nil?
+      return false if @ref !~ Regexp.new(/^manager_ref$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] inventory_collection_name Value to be assigned
+    def inventory_collection_name=(inventory_collection_name)
+      if inventory_collection_name.nil?
+        fail ArgumentError, 'inventory_collection_name cannot be nil'
+      end
+
+      if inventory_collection_name !~ Regexp.new(/^service_inventories$/)
+        fail ArgumentError, 'invalid value for "inventory_collection_name", must conform to the pattern /^service_inventories$/.'
+      end
+
+      @inventory_collection_name = inventory_collection_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] ref Value to be assigned
+    def ref=(ref)
+      if ref.nil?
+        fail ArgumentError, 'ref cannot be nil'
+      end
+
+      if ref !~ Regexp.new(/^manager_ref$/)
+        fail ArgumentError, 'invalid value for "ref", must conform to the pattern /^manager_ref$/.'
+      end
+
+      @ref = ref
     end
 
     # Checks equality by comparing each attribute.
@@ -122,14 +130,9 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          archived_at == o.archived_at &&
-          description == o.description &&
-          extra == o.extra &&
-          name == o.name &&
-          resource_timestamp == o.resource_timestamp &&
-          source_created_at == o.source_created_at &&
-          source_ref == o.source_ref &&
-          source_updated_at == o.source_updated_at
+          inventory_collection_name == o.inventory_collection_name &&
+          reference == o.reference &&
+          ref == o.ref
     end
 
     # @see the `==` method
@@ -141,7 +144,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [archived_at, description, extra, name, resource_timestamp, source_created_at, source_ref, source_updated_at].hash
+      [inventory_collection_name, reference, ref].hash
     end
 
     # Builds the object from hash
