@@ -32,6 +32,8 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :resource_timestamp
 
+    attr_accessor :service_inventory
+
     attr_accessor :service_offering_icon
 
     attr_accessor :source_created_at
@@ -58,6 +60,7 @@ module TopologicalInventoryIngressApiClient
         :'long_description' => :'long_description',
         :'name' => :'name',
         :'resource_timestamp' => :'resource_timestamp',
+        :'service_inventory' => :'service_inventory',
         :'service_offering_icon' => :'service_offering_icon',
         :'source_created_at' => :'source_created_at',
         :'source_deleted_at' => :'source_deleted_at',
@@ -80,6 +83,7 @@ module TopologicalInventoryIngressApiClient
         :'long_description' => :'String',
         :'name' => :'String',
         :'resource_timestamp' => :'DateTime',
+        :'service_inventory' => :'ServiceInventoryReference',
         :'service_offering_icon' => :'ServiceOfferingIconReference',
         :'source_created_at' => :'DateTime',
         :'source_deleted_at' => :'DateTime',
@@ -132,6 +136,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.has_key?(:'resource_timestamp')
         self.resource_timestamp = attributes[:'resource_timestamp']
+      end
+
+      if attributes.has_key?(:'service_inventory')
+        self.service_inventory = attributes[:'service_inventory']
       end
 
       if attributes.has_key?(:'service_offering_icon')
@@ -195,6 +203,7 @@ module TopologicalInventoryIngressApiClient
           long_description == o.long_description &&
           name == o.name &&
           resource_timestamp == o.resource_timestamp &&
+          service_inventory == o.service_inventory &&
           service_offering_icon == o.service_offering_icon &&
           source_created_at == o.source_created_at &&
           source_deleted_at == o.source_deleted_at &&
@@ -213,7 +222,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [archived_at, description, display_name, distributor, documentation_url, extra, long_description, name, resource_timestamp, service_offering_icon, source_created_at, source_deleted_at, source_ref, source_region, subscription, support_url].hash
+      [archived_at, description, display_name, distributor, documentation_url, extra, long_description, name, resource_timestamp, service_inventory, service_offering_icon, source_created_at, source_deleted_at, source_ref, source_region, subscription, support_url].hash
     end
 
     # Builds the object from hash
