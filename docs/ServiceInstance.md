@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **extra** | [**Object**](.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **resource_timestamp** | **DateTime** |  | [optional] 
+**root_service_instance** | [**ServiceInstanceReference**](ServiceInstanceReference.md) |  | [optional] 
+**service_inventory** | [**ServiceInventoryReference**](ServiceInventoryReference.md) |  | [optional] 
 **service_offering** | [**ServiceOfferingReference**](ServiceOfferingReference.md) |  | [optional] 
 **service_plan** | [**ServicePlanReference**](ServicePlanReference.md) |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 

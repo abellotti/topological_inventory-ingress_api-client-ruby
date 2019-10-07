@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **long_description** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **resource_timestamp** | **DateTime** |  | [optional] 
+**service_inventory** | [**ServiceInventoryReference**](ServiceInventoryReference.md) |  | [optional] 
 **service_offering_icon** | [**ServiceOfferingIconReference**](ServiceOfferingIconReference.md) |  | [optional] 
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 

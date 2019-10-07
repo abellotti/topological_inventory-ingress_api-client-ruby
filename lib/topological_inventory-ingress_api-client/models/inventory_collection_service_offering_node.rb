@@ -13,73 +13,28 @@ OpenAPI Generator version: 3.3.4
 require 'date'
 
 module TopologicalInventoryIngressApiClient
-  class ServiceInstance
-    attr_accessor :archived_at
-
-    # URL of the service instance in the external source (OpenShift, Azure, AWS, ...).
-    attr_accessor :external_url
-
-    attr_accessor :extra
-
+  class InventoryCollectionServiceOfferingNode
     attr_accessor :name
 
-    attr_accessor :resource_timestamp
+    attr_accessor :data
 
-    attr_accessor :root_service_instance
-
-    attr_accessor :service_inventory
-
-    attr_accessor :service_offering
-
-    attr_accessor :service_plan
-
-    attr_accessor :source_created_at
-
-    attr_accessor :source_deleted_at
-
-    attr_accessor :source_ref
-
-    attr_accessor :source_region
-
-    attr_accessor :subscription
+    attr_accessor :partial_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'archived_at' => :'archived_at',
-        :'external_url' => :'external_url',
-        :'extra' => :'extra',
         :'name' => :'name',
-        :'resource_timestamp' => :'resource_timestamp',
-        :'root_service_instance' => :'root_service_instance',
-        :'service_inventory' => :'service_inventory',
-        :'service_offering' => :'service_offering',
-        :'service_plan' => :'service_plan',
-        :'source_created_at' => :'source_created_at',
-        :'source_deleted_at' => :'source_deleted_at',
-        :'source_ref' => :'source_ref',
-        :'source_region' => :'source_region',
-        :'subscription' => :'subscription'
+        :'data' => :'data',
+        :'partial_data' => :'partial_data'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'archived_at' => :'DateTime',
-        :'external_url' => :'String',
-        :'extra' => :'Object',
         :'name' => :'String',
-        :'resource_timestamp' => :'DateTime',
-        :'root_service_instance' => :'ServiceInstanceReference',
-        :'service_inventory' => :'ServiceInventoryReference',
-        :'service_offering' => :'ServiceOfferingReference',
-        :'service_plan' => :'ServicePlanReference',
-        :'source_created_at' => :'DateTime',
-        :'source_deleted_at' => :'DateTime',
-        :'source_ref' => :'String',
-        :'source_region' => :'SourceRegionReference',
-        :'subscription' => :'SubscriptionReference'
+        :'data' => :'Array<ServiceOfferingNode>',
+        :'partial_data' => :'Array<ServiceOfferingNode>'
       }
     end
 
@@ -91,60 +46,20 @@ module TopologicalInventoryIngressApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'archived_at')
-        self.archived_at = attributes[:'archived_at']
-      end
-
-      if attributes.has_key?(:'external_url')
-        self.external_url = attributes[:'external_url']
-      end
-
-      if attributes.has_key?(:'extra')
-        self.extra = attributes[:'extra']
-      end
-
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'resource_timestamp')
-        self.resource_timestamp = attributes[:'resource_timestamp']
+      if attributes.has_key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
       end
 
-      if attributes.has_key?(:'root_service_instance')
-        self.root_service_instance = attributes[:'root_service_instance']
-      end
-
-      if attributes.has_key?(:'service_inventory')
-        self.service_inventory = attributes[:'service_inventory']
-      end
-
-      if attributes.has_key?(:'service_offering')
-        self.service_offering = attributes[:'service_offering']
-      end
-
-      if attributes.has_key?(:'service_plan')
-        self.service_plan = attributes[:'service_plan']
-      end
-
-      if attributes.has_key?(:'source_created_at')
-        self.source_created_at = attributes[:'source_created_at']
-      end
-
-      if attributes.has_key?(:'source_deleted_at')
-        self.source_deleted_at = attributes[:'source_deleted_at']
-      end
-
-      if attributes.has_key?(:'source_ref')
-        self.source_ref = attributes[:'source_ref']
-      end
-
-      if attributes.has_key?(:'source_region')
-        self.source_region = attributes[:'source_region']
-      end
-
-      if attributes.has_key?(:'subscription')
-        self.subscription = attributes[:'subscription']
+      if attributes.has_key?(:'partial_data')
+        if (value = attributes[:'partial_data']).is_a?(Array)
+          self.partial_data = value
+        end
       end
     end
 
@@ -152,8 +67,8 @@ module TopologicalInventoryIngressApiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @source_ref.nil?
-        invalid_properties.push('invalid value for "source_ref", source_ref cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -162,7 +77,7 @@ module TopologicalInventoryIngressApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @source_ref.nil?
+      return false if @name.nil?
       true
     end
 
@@ -171,20 +86,9 @@ module TopologicalInventoryIngressApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          archived_at == o.archived_at &&
-          external_url == o.external_url &&
-          extra == o.extra &&
           name == o.name &&
-          resource_timestamp == o.resource_timestamp &&
-          root_service_instance == o.root_service_instance &&
-          service_inventory == o.service_inventory &&
-          service_offering == o.service_offering &&
-          service_plan == o.service_plan &&
-          source_created_at == o.source_created_at &&
-          source_deleted_at == o.source_deleted_at &&
-          source_ref == o.source_ref &&
-          source_region == o.source_region &&
-          subscription == o.subscription
+          data == o.data &&
+          partial_data == o.partial_data
     end
 
     # @see the `==` method
@@ -196,7 +100,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [archived_at, external_url, extra, name, resource_timestamp, root_service_instance, service_inventory, service_offering, service_plan, source_created_at, source_deleted_at, source_ref, source_region, subscription].hash
+      [name, data, partial_data].hash
     end
 
     # Builds the object from hash
