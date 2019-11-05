@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::ServiceInstanceNode
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived_at** | **DateTime** |  | [optional] 
@@ -13,5 +14,22 @@ Name | Type | Description | Notes
 **source_created_at** | **DateTime** |  | [optional] 
 **source_ref** | **String** |  | 
 **source_updated_at** | **DateTime** |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::ServiceInstanceNode.new(archived_at: null,
+                                 extra: null,
+                                 name: null,
+                                 resource_timestamp: null,
+                                 root_service_instance: null,
+                                 service_instance: null,
+                                 service_inventory: null,
+                                 source_created_at: null,
+                                 source_ref: null,
+                                 source_updated_at: null)
+```
 
 

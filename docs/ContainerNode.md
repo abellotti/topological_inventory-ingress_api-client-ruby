@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::ContainerNode
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addresses** | **Array&lt;Object&gt;** |  | [optional] 
@@ -20,5 +21,29 @@ Name | Type | Description | Notes
 **source_created_at** | **DateTime** |  | [optional] 
 **source_deleted_at** | **DateTime** |  | [optional] 
 **source_ref** | **String** |  | 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::ContainerNode.new(addresses: null,
+                                 allocatable_cpus: null,
+                                 allocatable_memory: null,
+                                 allocatable_pods: null,
+                                 archived_at: null,
+                                 conditions: null,
+                                 cpus: null,
+                                 lives_on: null,
+                                 memory: null,
+                                 name: null,
+                                 node_info: null,
+                                 pods: null,
+                                 resource_timestamp: null,
+                                 resource_version: null,
+                                 source_created_at: null,
+                                 source_deleted_at: null,
+                                 source_ref: null)
+```
 
 

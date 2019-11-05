@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::Network
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived_at** | **DateTime** |  | [optional] 
@@ -15,5 +16,24 @@ Name | Type | Description | Notes
 **source_region** | [**SourceRegionReference**](SourceRegionReference.md) |  | [optional] 
 **status** | **String** |  | [optional] 
 **subscription** | [**SubscriptionReference**](SubscriptionReference.md) |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::Network.new(archived_at: null,
+                                 cidr: null,
+                                 extra: null,
+                                 name: null,
+                                 orchestration_stack: null,
+                                 resource_timestamp: null,
+                                 source_created_at: null,
+                                 source_deleted_at: null,
+                                 source_ref: null,
+                                 source_region: null,
+                                 status: null,
+                                 subscription: null)
+```
 
 

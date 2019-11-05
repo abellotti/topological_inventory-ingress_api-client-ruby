@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::VolumeType
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived_at** | **DateTime** |  | [optional] 
@@ -8,5 +9,17 @@ Name | Type | Description | Notes
 **extra** | [**Object**](.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **source_ref** | **String** |  | 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::VolumeType.new(archived_at: null,
+                                 description: null,
+                                 extra: null,
+                                 name: null,
+                                 source_ref: null)
+```
 
 
