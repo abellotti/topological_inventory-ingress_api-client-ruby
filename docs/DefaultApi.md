@@ -8,12 +8,15 @@ Method | HTTP request | Description
 [**save_inventory**](DefaultApi.md#save_inventory) | **POST** /inventory | save inventory
 
 
-# **get_documentation**
+
+## get_documentation
+
 > get_documentation
 
 Return this API document in JSON format
 
 ### Example
+
 ```ruby
 # load the gem
 require 'topological_inventory-ingress_api-client'
@@ -29,6 +32,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -41,12 +45,12 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## save_inventory
 
-# **save_inventory**
 > Object save_inventory(inventory)
 
 save inventory
@@ -54,6 +58,7 @@ save inventory
 Submits a payload to be persisted to the database
 
 ### Example
+
 ```ruby
 # load the gem
 require 'topological_inventory-ingress_api-client'
@@ -72,6 +77,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inventory** | [**Inventory**](Inventory.md)| Inventory payload | 
@@ -86,8 +92,6 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: application/json
+- **Accept**: application/json
 

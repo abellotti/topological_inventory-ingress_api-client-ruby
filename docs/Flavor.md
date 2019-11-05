@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::Flavor
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived_at** | **DateTime** |  | [optional] 
@@ -12,5 +13,21 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the flavor. | [optional] 
 **resource_timestamp** | **DateTime** | Timestamp marking age of the data. | [optional] 
 **source_ref** | **String** | Unique identifier of the entity. | 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::Flavor.new(archived_at: null,
+                                 cpus: null,
+                                 disk_count: null,
+                                 disk_size: null,
+                                 extra: null,
+                                 memory: null,
+                                 name: null,
+                                 resource_timestamp: null,
+                                 source_ref: null)
+```
 
 

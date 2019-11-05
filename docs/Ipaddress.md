@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::Ipaddress
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived_at** | **DateTime** |  | [optional] 
@@ -16,5 +17,25 @@ Name | Type | Description | Notes
 **source_region** | [**SourceRegionReference**](SourceRegionReference.md) |  | [optional] 
 **subnet** | [**SubnetReference**](SubnetReference.md) |  | [optional] 
 **subscription** | [**SubscriptionReference**](SubscriptionReference.md) |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::Ipaddress.new(archived_at: null,
+                                 extra: null,
+                                 ipaddress: null,
+                                 kind: null,
+                                 network_adapter: null,
+                                 orchestration_stack: null,
+                                 resource_timestamp: null,
+                                 source_created_at: null,
+                                 source_deleted_at: null,
+                                 source_ref: null,
+                                 source_region: null,
+                                 subnet: null,
+                                 subscription: null)
+```
 
 

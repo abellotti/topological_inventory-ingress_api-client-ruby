@@ -1,6 +1,7 @@
 # TopologicalInventoryIngressApiClient::Vm
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **archived_at** | **DateTime** |  | [optional] 
@@ -22,5 +23,31 @@ Name | Type | Description | Notes
 **source_region** | [**SourceRegionReference**](SourceRegionReference.md) |  | [optional] 
 **subscription** | [**SubscriptionReference**](SubscriptionReference.md) |  | [optional] 
 **uid_ems** | **String** |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'TopologicalInventoryIngressApiClient'
+
+instance = TopologicalInventoryIngressApiClient::Vm.new(archived_at: null,
+                                 cpus: null,
+                                 description: null,
+                                 extra: null,
+                                 flavor: null,
+                                 host_inventory_uuid: 82729f49-ed4e-4fc6-9ca1-b0ffee063874,
+                                 hostname: null,
+                                 mac_addresses: [&quot;06:d5:e7:4e:c8:92&quot;,&quot;06:d5:e7:4e:c8:93&quot;],
+                                 memory: null,
+                                 name: null,
+                                 orchestration_stack: null,
+                                 power_state: null,
+                                 resource_timestamp: null,
+                                 source_created_at: null,
+                                 source_deleted_at: null,
+                                 source_ref: null,
+                                 source_region: null,
+                                 subscription: null,
+                                 uid_ems: null)
+```
 
 
