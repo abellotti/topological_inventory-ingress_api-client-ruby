@@ -24,6 +24,8 @@ module TopologicalInventoryIngressApiClient
 
     attr_accessor :flavor
 
+    attr_accessor :host
+
     # UUID of the host in host inventory
     attr_accessor :host_inventory_uuid
 
@@ -62,6 +64,7 @@ module TopologicalInventoryIngressApiClient
         :'description' => :'description',
         :'extra' => :'extra',
         :'flavor' => :'flavor',
+        :'host' => :'host',
         :'host_inventory_uuid' => :'host_inventory_uuid',
         :'hostname' => :'hostname',
         :'mac_addresses' => :'mac_addresses',
@@ -87,6 +90,7 @@ module TopologicalInventoryIngressApiClient
         :'description' => :'String',
         :'extra' => :'Object',
         :'flavor' => :'FlavorReference',
+        :'host' => :'HostReference',
         :'host_inventory_uuid' => :'String',
         :'hostname' => :'String',
         :'mac_addresses' => :'Array<String>',
@@ -112,6 +116,7 @@ module TopologicalInventoryIngressApiClient
         :'description',
         :'extra',
         :'flavor',
+        :'host',
         :'host_inventory_uuid',
         :'hostname',
         :'mac_addresses',
@@ -169,6 +174,10 @@ module TopologicalInventoryIngressApiClient
 
       if attributes.key?(:'flavor')
         self.flavor = attributes[:'flavor']
+      end
+
+      if attributes.key?(:'host')
+        self.host = attributes[:'host']
       end
 
       if attributes.key?(:'host_inventory_uuid')
@@ -258,6 +267,7 @@ module TopologicalInventoryIngressApiClient
           description == o.description &&
           extra == o.extra &&
           flavor == o.flavor &&
+          host == o.host &&
           host_inventory_uuid == o.host_inventory_uuid &&
           hostname == o.hostname &&
           mac_addresses == o.mac_addresses &&
@@ -283,7 +293,7 @@ module TopologicalInventoryIngressApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [archived_at, cpus, description, extra, flavor, host_inventory_uuid, hostname, mac_addresses, memory, name, orchestration_stack, power_state, resource_timestamp, source_created_at, source_deleted_at, source_ref, source_region, subscription, uid_ems].hash
+      [archived_at, cpus, description, extra, flavor, host, host_inventory_uuid, hostname, mac_addresses, memory, name, orchestration_stack, power_state, resource_timestamp, source_created_at, source_deleted_at, source_ref, source_region, subscription, uid_ems].hash
     end
 
     # Builds the object from hash
